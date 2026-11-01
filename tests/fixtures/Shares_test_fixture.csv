@@ -1,0 +1,27 @@
+Date,ShareLink,ShareCommentary,SharedUrl,MediaUrl,Visibility
+2026-10-27 13:05:00,https://www.linkedin.com/feed/update/urn:li:activity:1/,"🧠 A Thought Experiment
+🔁 Sample Series Post One
+
+This is test text for checking layout. It has several lines.
+A second line follows directly.
+
+A new paragraph with a mention of @[Test Person](urn:li:person:abc123) and ""quoted words"".
+
+1. First point
+2. Second point
+
+{hashtag|\#|Leadership} {hashtag|\#|SRE}",,,MEMBER_NETWORK
+2026-10-20 09:00:00,https://www.linkedin.com/feed/update/urn:li:activity:2/,"🧠 A Thought Experiment
+Sample Series Post Two: A Longer Title For Wrapping
+
+Test body paragraph for the second sample. # not a heading
+
+#Engineering #Teams",,,MEMBER_NETWORK
+2026-09-15 18:30:00,https://www.linkedin.com/feed/update/urn:li:activity:3/,"This sample post has no series header and a first line that is a long sentence rather than a title, which should be shortened sensibly by the importer so it fits as a heading on the page.
+
+Second paragraph of test text.",,,MEMBER_NETWORK
+2025-12-01 08:00:00,https://www.linkedin.com/feed/update/urn:li:activity:4/,"Sample from last year
+
+Older test post body.",,,MEMBER_NETWORK
+2026-08-01 08:00:00,https://x/5,Connections-only sample that should be skipped by default.,,,CONNECTIONS_ONLY
+2026-08-02 08:00:00,https://x/6,,https://example.com/article,,

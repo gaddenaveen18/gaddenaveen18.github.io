@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% set title = item.title %}
+{% set description = item.excerpt %}
+{% block content %}
+<article class="article">
+  <header class="wrap narrow article-head"><h1>{{ item.title }}</h1></header>
+  <div class="wrap narrow prose">{{ item.body_html|safe }}</div>
+</article>
+{% endblock %}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set page_title = (title ~ " | " ~ site.title) if title else site.title %}
+  {% set page_desc = description or site.description %}
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_desc }}">
+  <meta name="author" content="{{ site.author }}">
+  <link rel="canonical" href="{{ site_url }}{{ path }}">
+  <meta property="og:type" content="{{ og_type or 'website' }}">
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ page_desc }}">
+  <meta property="og:url" content="{{ site_url }}{{ path }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  {% if og_image %}
+  <meta property="og:image" content="{{ site_url }}/assets/{{ og_image }}">
+  <meta property="og:image:alt" content="{{ og_image_alt or title }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {% else %}
+  <meta name="twitter:card" content="summary">
+  {% endif %}
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="{{ base }}/assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ base }}/feed.xml">
+  <link rel="preload" href="{{ base }}/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ base }}/assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="name" href="{{ base }}/">{{ site.title }}</a>
+      <nav aria-label="Main">
+        <a href="{{ base }}/posts/" {% if path.startswith('/posts') %}aria-current="page"{% endif %}>Writing</a>
+        {% if nav_frameworks %}<a href="{{ base }}{{ nav_frameworks[0].url }}" {% if path.startswith('/frameworks') %}aria-current="page"{% endif %}>Frameworks</a>{% endif %}
+        <a href="{{ base }}/about/" {% if path.startswith('/about') %}aria-current="page"{% endif %}>About</a>
+        {% if 'YOUR-' not in site.linkedin_url %}<a href="{{ site.linkedin_url }}" rel="me noopener">LinkedIn</a>{% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="colophon">
+    <div class="wrap colophon-inner">
+      <span>&copy; {{ year }} {{ site.author }}</span>
+      <span>
+        {% if 'YOUR-' not in site.linkedin_url %}<a href="{{ site.linkedin_url }}" rel="me noopener">LinkedIn</a>{% endif %}
+        {% if site.email %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
+        <a href="{{ base }}/feed.xml">RSS</a>
+      </span>
+    </div>
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "_macros.html" import question_loop %}
+{% set title = item.title %}
+{% set description = item.excerpt %}
+{% set og_image = item.meta.get('image') %}
+{% set og_image_alt = item.meta.get('image_alt') %}
+{% block content %}
+<article class="article">
+  <header class="wrap narrow article-head">
+    <p class="series-kicker">Framework</p>
+    <h1>{{ item.title }}</h1>
+    {% if item.meta.source %}
+      <p class="article-meta">Introduced in <a href="{{ base }}{{ item.meta.source.url }}">{{ item.meta.source.title }}</a></p>
+    {% elif item.meta.get('source_post') %}
+      <p class="article-meta">Introduced in “{{ item.meta.source_post }}”</p>
+    {% endif %}
+  </header>
+  {% if item.meta.get('diagram') == 'question-loop' and item.meta.get('stages') %}
+    <figure class="wrap narrow fw-figure">
+      {{ question_loop(item.meta.stages.split(',')|map('trim')|list, size=480, label=item.title) }}
+    </figure>
+  {% endif %}
+  <div class="wrap narrow prose">
+    {{ item.body_html|safe }}
+    {% if item.meta.get('image') %}
+      <p><a href="{{ base }}/assets/{{ item.meta.image }}">View the full infographic</a></p>
+    {% endif %}
+  </div>
+</article>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% from "_macros.html" import post_row %}
+{% set title = "Writing" %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap narrow">
+    <h1>Writing</h1>
+    <p class="page-sub">{{ posts|length }} post{{ '' if posts|length == 1 else 's' }}, newest first. Originally published on LinkedIn.</p>
+    {% if posts %}
+    <div class="filter">
+      <label for="q">Search posts</label>
+      <input id="q" type="search" placeholder="Search by title or words in the post" autocomplete="off">
+      <label class="check"><input type="checkbox" id="series-only"> Only <em>{{ series_label }}</em></label>
+      <p class="filter-status" id="filter-status" role="status" aria-live="polite"></p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+<section class="archive">
+  <div class="wrap narrow">
+    {% for year, items in years %}
+      <div class="year-group">
+        <h2 class="year">{{ year }}</h2>
+        <ol class="entries">
+          {% for p in items %}
+            <li class="entry" data-text="{{ (p.title ~ ' ' ~ p.excerpt ~ ' ' ~ p.tags|join(' '))|lower }}" data-series="{{ p.meta.get('series', '') }}">
+              <a class="entry-link" href="{{ base }}{{ p.url }}">
+                <span class="entry-meta"><time datetime="{{ p.date.isoformat() }}">{{ p.date|date }}</time>
+                {% if p.meta.get('series') == 'thought-experiment' %}<span class="series-mark">{{ series_label }}</span>{% endif %}</span>
+                <span class="entry-title">{{ p.title }}</span>
+                <span class="entry-excerpt">{{ p.excerpt }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% else %}
+      <p class="empty">No posts yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ base }}/assets/js/archive.js"></script>{% endblock %}

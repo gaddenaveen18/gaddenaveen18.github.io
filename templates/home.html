@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% from "_macros.html" import post_row, question_loop %}
+{% block content %}
+{% set loop_fw = frameworks|selectattr('meta.diagram', 'equalto', 'question-loop')|list %}
+<section class="intro">
+  <div class="wrap intro-grid{% if not loop_fw %} solo{% endif %}">
+    <div>
+      <p class="intro-lede">{{ site.tagline }}</p>
+      <p class="intro-body">I write a weekly series called <em>{{ series_label }}</em>: one idea about leadership, engineering or work, examined from a different angle. This site keeps every post and framework in one place.</p>
+      <p class="intro-links">
+        <a class="button" href="{{ base }}/posts/">Read the writing</a>
+        {% if 'YOUR-' not in site.linkedin_url %}<a class="button quiet" href="{{ site.linkedin_url }}" rel="me noopener">Follow on LinkedIn</a>{% endif %}
+      </p>
+    </div>
+    {% if loop_fw %}
+    <a class="intro-figure" href="{{ base }}{{ loop_fw[0].url }}" aria-label="Open {{ loop_fw[0].title }}">
+      {{ question_loop(loop_fw[0].meta.stages.split(',')|map('trim')|list, label=loop_fw[0].title) }}
+      <span class="figure-caption">{{ loop_fw[0].title }}, a framework from the series</span>
+    </a>
+    {% endif %}
+  </div>
+</section>
+
+{% if latest_series %}
+<section class="feature">
+  <div class="wrap">
+    <a class="feature-card{% if latest_series.meta.get('image') %} has-image{% endif %}" href="{{ base }}{{ latest_series.url }}">
+      <span class="feature-text">
+        <span class="series-kicker"><span aria-hidden="true">🧠</span> {{ series_label }}, latest</span>
+        <span class="feature-title">{{ latest_series.title }}</span>
+        <span class="feature-excerpt">{{ latest_series.excerpt }}</span>
+        <span class="feature-meta"><time datetime="{{ latest_series.date.isoformat() }}">{{ latest_series.date|date }}</time></span>
+      </span>
+      {% if latest_series.meta.get('image') %}<img class="feature-thumb" src="{{ base }}/assets/{{ latest_series.meta.image }}" alt="" loading="lazy">{% endif %}
+    </a>
+  </div>
+</section>
+{% endif %}
+
+<section class="recent">
+  <div class="wrap"><div class="col">
+    <h2 class="section-title">Recent writing</h2>
+    {% if posts %}
+      <ol class="entries">
+        {% for p in posts if p != latest_series %}{{ post_row(p) }}{% endfor %}
+      </ol>
+      {% if all_count > posts|length %}<p class="more"><a href="{{ base }}/posts/">All {{ all_count }} posts</a></p>{% endif %}
+    {% else %}
+      <p class="empty">No posts yet.</p>
+    {% endif %}
+  </div></div>
+</section>
+
+{% if frameworks %}
+<section class="frameworks">
+  <div class="wrap"><div class="col">
+    <h2 class="section-title">Frameworks</h2>
+    <ul class="fw-list">
+      {% for f in frameworks %}
+      <li><a href="{{ base }}{{ f.url }}"><span class="fw-title">{{ f.title }}</span><span class="fw-summary">{{ f.excerpt }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div></div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% set title = item.title %}
+{% set description = item.excerpt %}
+{% set og_type = "article" %}
+{% set og_image = item.meta.get('image') %}
+{% set og_image_alt = item.meta.get('image_alt') %}
+{% block content %}
+<article class="article">
+  <header class="wrap narrow article-head">
+    {% if item.meta.get('series') == 'thought-experiment' %}
+      <p class="series-kicker"><span aria-hidden="true">🧠</span> {{ series_label }}</p>
+    {% endif %}
+    <h1>{{ item.title }}</h1>
+    <p class="article-meta"><time datetime="{{ item.date.isoformat() }}">{{ item.date|date }}</time>
+      {% if item.tags %}<span class="tags">{% for t in item.tags %}<span class="tag">#{{ t }}</span>{% endfor %}</span>{% endif %}</p>
+  </header>
+  {% if item.meta.get('image') %}
+  <figure class="post-image">
+    <a href="{{ base }}/assets/{{ item.meta.image }}" title="Open the full-size image">
+      <img src="{{ base }}/assets/{{ item.meta.image }}" alt="{{ item.meta.get('image_alt', '') }}" loading="eager" decoding="async">
+    </a>
+  </figure>
+  {% endif %}
+  <div class="wrap narrow prose">
+    {{ item.body_html|safe }}
+  </div>
+  <footer class="wrap narrow article-foot">
+    {% if item.meta.get('linkedin_url') %}
+      <p><a class="button quiet" href="{{ item.meta.linkedin_url }}" rel="noopener">Join the discussion on LinkedIn</a></p>
+    {% endif %}
+    <nav class="pager" aria-label="More posts">
+      {% if item.meta.older %}<a class="pager-older" href="{{ base }}{{ item.meta.older.url }}"><span>Previous</span>{{ item.meta.older.title }}</a>{% else %}<span></span>{% endif %}
+      {% if item.meta.newer %}<a class="pager-newer" href="{{ base }}{{ item.meta.newer.url }}"><span>Next</span>{{ item.meta.newer.title }}</a>{% endif %}
+    </nav>
+  </footer>
+</article>
+{% endblock %}
