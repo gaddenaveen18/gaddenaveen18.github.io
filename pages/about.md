@@ -32,4 +32,4 @@ I hold a Post-Master's in Management Information Systems from Oakland University
 
 ## This site
 
-Every week I publish *A Thought Experiment* on LinkedIn: one idea about leadership, engineering or work, looked at from a different angle. This site collects those posts and the frameworks that come out of them, so they're easy to find and share.
+From time to time I publish *A Thought Experiment* on LinkedIn: one idea about leadership, engineering or work, looked at from a different angle. This site collects those posts, the frameworks that come out of them and the short books built from them, so they're easy to find and share.
