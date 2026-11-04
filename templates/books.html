@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% set title = "Books" %}
+{% set description = "Thought Experiments for the Superintelligence Era: free 10-page micro-books by " ~ site.author ~ ". Ten minutes to read, with space to write your answers." %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="series-kicker">Thought Experiments for the Superintelligence Era</p>
+    <h1>Books</h1>
+    <p class="page-sub books-sub">Short books built from the series: ten pages, about ten minutes, with space to write your own answers. Free to read and share.</p>
+  </div>
+</section>
+<section class="books">
+  <div class="wrap">
+    <ol class="books-grid">
+      {% for b in books %}
+      <li class="book-card">
+        <a class="book-cover-link" href="{{ base }}{{ b.url }}" aria-label="{{ b.title }}, volume {{ b.meta.volume }}">
+          <img src="{{ base }}/assets/{{ b.meta.cover }}" alt="" loading="lazy" width="300" height="375">
+        </a>
+        <span class="book-vol">Vol. {{ b.meta.volume }}</span>
+        <a class="book-title" href="{{ base }}{{ b.url }}">{{ b.title }}</a>
+        <span class="book-question">{{ b.excerpt }}</span>
+        <span class="book-actions">
+          <a href="{{ base }}/assets/{{ b.meta.pdf }}" download>Download PDF</a>
+          {% if b.meta.get('audio') %}<a href="{{ base }}{{ b.url }}#listen">Listen</a>{% endif %}
+        </span>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% endblock %}

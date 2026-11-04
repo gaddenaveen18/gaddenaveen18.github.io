@@ -37,6 +37,20 @@
 </section>
 {% endif %}
 
+{% if books %}
+<section class="books-strip">
+  <div class="wrap"><div class="col">
+    <h2 class="section-title">Books · <em>Thought Experiments for the Superintelligence Era</em></h2>
+    <ul class="book-row">
+      {% for b in books %}
+      <li><a href="{{ base }}{{ b.url }}"><img src="{{ base }}/assets/{{ b.meta.cover }}" alt="" loading="lazy" width="300" height="375"><span class="book-row-vol">Vol. {{ b.meta.volume }}</span><span class="book-row-title">{{ b.title }}</span></a></li>
+      {% endfor %}
+    </ul>
+    <p class="more"><a href="{{ base }}/books/">All books, free to download</a></p>
+  </div></div>
+</section>
+{% endif %}
+
 <section class="recent">
   <div class="wrap"><div class="col">
     <h2 class="section-title">Recent writing</h2>

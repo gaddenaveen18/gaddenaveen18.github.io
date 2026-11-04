@@ -29,12 +29,12 @@ def site(tmp_path, monkeypatch):
 
 def test_builds_with_no_posts(site):
     copy, build, _ = site
-    for f in (copy / "posts").glob("2026-*.md"):
+    for f in list((copy / "posts").glob("2026-*.md")) + list((copy / "books").glob("*.md")):
         f.unlink()  # start from an empty site
     for f in (copy / "frameworks").glob("*.md"):
         f.write_text(f.read_text().replace("date: 2026-11-19\n", ""))
     counts = build.build(copy / "_site")
-    assert counts == {"posts": 0, "frameworks": 1, "pages": 1, "scheduled": []}
+    assert counts == {"posts": 0, "frameworks": 1, "books": 0, "pages": 1, "scheduled": []}
     home = (copy / "_site" / "index.html").read_text()
     assert "No posts yet." in home and "The Question Loop" in home
     for f in ["about/index.html", "posts/index.html", "frameworks/the-question-loop/index.html",
@@ -163,4 +163,32 @@ def test_missing_image_is_reported(site):
     copy, build, _ = site
     (copy / "posts" / "2020-01-01-x.md").write_text("---\ntitle: X\nimage: posts/nope.jpg\n---\nbody")
     with pytest.raises(build.ContentError, match="Image not found"):
+        build.build(copy / "_site")
+
+
+def test_books_appear_on_their_release_date(site):
+    from datetime import date
+    copy, build, _ = site
+    out = copy / "_site"
+    early = build.build(out, today=date(2026, 11, 3))
+    assert early["books"] == 1
+    page = (out / "books" / "perfect-knowledge-vs-imperfect-brilliance" / "index.html").read_text()
+    assert "Download the free PDF" in page and "Key ideas in one minute" in page
+    assert 'href="/books/"' in (out / "index.html").read_text()  # nav + home strip
+    assert not (out / "books" / "growth-through-giving").exists()
+    late = build.build(out, today=date(2027, 3, 1))
+    assert late["books"] == 7
+    books = (out / "books" / "index.html").read_text()
+    assert books.index("Vol. 1") < books.index("Vol. 7")
+    rq = (out / "books" / "right-questions-vs-right-answers" / "index.html").read_text()
+    assert 'href="/posts/right-questions-vs-right-answers/"' in rq  # links to its post
+    for b in (copy / "books").glob("*.md"):
+        stem = b.stem
+        assert (out / "assets" / "books" / f"{stem}.pdf").exists() and (out / "assets" / "books" / f"{stem}.jpg").exists()
+
+
+def test_missing_book_file_is_reported(site):
+    copy, build, _ = site
+    (copy / "books" / "vol9-x.md").write_text("---\ntitle: X\nvolume: 9\ncover: books/nope.jpg\npdf: books/nope.pdf\n---\nbody")
+    with pytest.raises(build.ContentError, match="not found in static"):
         build.build(copy / "_site")

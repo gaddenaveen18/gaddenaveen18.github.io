@@ -11,6 +11,7 @@ To preview on your own computer (optional):
 Content lives in plain text files:
     posts/        one Markdown file per post   (2026-11-03-my-title.md)
     frameworks/   one Markdown file per framework
+    books/        one Markdown file per book (cover and PDF go in static/books/)
     pages/        other pages (about.md)
     site.json     your name, links and settings
 """
@@ -39,7 +40,7 @@ OUT = ROOT / "_site"
 
 @dataclass
 class Item:
-    kind: str                 # "post", "framework" or "page"
+    kind: str                 # "post", "framework", "book" or "page"
     slug: str
     title: str
     body_html: str
@@ -54,6 +55,8 @@ class Item:
             return f"/posts/{self.slug}/"
         if self.kind == "framework":
             return f"/frameworks/{self.slug}/"
+        if self.kind == "book":
+            return f"/books/{self.slug}/"
         return f"/{self.slug}/"
 
 
@@ -132,7 +135,7 @@ def load_folder(folder: Path, kind: str, today: date | None = None) -> list[Item
                 raise ContentError(f"{path.name}: date must look like 2026-11-03")
         if kind == "post" and not item_date:
             raise ContentError(f"{path.name}: posts need a date, either in the file name (2026-11-03-title.md) or as 'date:'")
-        if today and item_date and kind in ("post", "framework") and item_date > today:
+        if today and item_date and kind in ("post", "framework", "book") and item_date > today:
             continue  # scheduled for later
         title = meta.get("title") or stem.replace("-", " ").capitalize()
         body_html = render_markdown(body)
@@ -168,6 +171,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
 
     posts = sorted(load_folder(ROOT / "posts", "post", today), key=lambda p: (p.date, p.slug), reverse=True)
     frameworks = load_folder(ROOT / "frameworks", "framework", today)
+    books = sorted(load_folder(ROOT / "books", "book", today), key=lambda b: int(b.meta.get("volume", "0") or 0))
     pages = load_folder(ROOT / "pages", "page")
     series_label = cfg.get("series_label", "")
     series_posts = [p for p in posts if p.meta.get("series") == "thought-experiment"]
@@ -176,16 +180,18 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
         p.meta["newer"] = posts[i - 1] if i > 0 else None
         p.meta["older"] = posts[i + 1] if i + 1 < len(posts) else None
     by_title = {p.title.lower(): p for p in posts}
-    for f in frameworks:
+    for f in frameworks + books:
         src = f.meta.get("source_post", "").lower()
         f.meta["source"] = by_title.get(src)
+    for b in books:
+        b.meta["key_ideas"] = [k.strip() for k in b.meta.get("key_ideas", "").split("|") if k.strip()]
 
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html", "xml"]),
                       trim_blocks=True, lstrip_blocks=True)
     env.filters["date"] = format_date
     env.globals.update(cos=math.cos, sin=math.sin)
     env.globals.update(site=cfg, base=base, site_url=site_url, series_label=series_label,
-                       nav_frameworks=frameworks, year=datetime.now().year)
+                       nav_frameworks=frameworks, nav_books=bool(books), year=datetime.now().year)
 
     if out.exists():
         shutil.rmtree(out)
@@ -197,18 +203,22 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
         target.write_text(env.get_template(template).render(path=rel, **ctx), encoding="utf-8")
 
     write("/", "home.html", posts=posts[: cfg.get("home_post_count", 6)], all_count=len(posts),
-          latest_series=series_posts[0] if series_posts else None, frameworks=frameworks)
+          latest_series=series_posts[0] if series_posts else None, frameworks=frameworks, books=books)
     write("/posts/", "archive.html", posts=posts, years=_group_by_year(posts))
     for p in posts:
         write(p.url, "post.html", item=p)
     for f in frameworks:
         write(f.url, "framework.html", item=f)
+    if books:
+        write("/books/", "books.html", books=books)
+    for b in books:
+        write(b.url, "book.html", item=b)
     for pg in pages:
         write(pg.url, "page.html", item=pg)
     write("404.html", "404.html")
     write("feed.xml", "feed.xml", posts=posts[:30],
           updated=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + [i.url for i in posts + frameworks + pages])
+    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/books/"] if books else []) + [i.url for i in posts + frameworks + books + pages])
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n", encoding="utf-8")
     (out / ".nojekyll").write_text("", encoding="utf-8")
     if cfg.get("custom_domain"):
@@ -219,7 +229,11 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
                if i.meta.get("image") and not (ROOT / "static" / i.meta["image"]).is_file()]
     if missing:
         raise ContentError(f"Image not found in static/: {', '.join(missing)}")
-    return {"posts": len(posts), "frameworks": len(frameworks), "pages": len(pages), "scheduled": scheduled}
+    for b in load_folder(ROOT / "books", "book"):  # check files for scheduled books too
+        for key in ("cover", "pdf", "audio"):
+            if b.meta.get(key) and not (ROOT / "static" / b.meta[key]).is_file():
+                raise ContentError(f"books: '{key}' file not found in static/: {b.meta[key]}")
+    return {"posts": len(posts), "frameworks": len(frameworks), "books": len(books), "pages": len(pages), "scheduled": scheduled}
 
 
 def _group_by_year(posts):
@@ -243,7 +257,7 @@ if __name__ == "__main__":
     except ContentError as exc:
         print(f"\nBuild stopped: {exc}\n")
         sys.exit(1)
-    print(f"Built {counts['posts']} posts, {counts['frameworks']} frameworks, {counts['pages']} pages into _site/")
+    print(f"Built {counts['posts']} posts, {counts['frameworks']} frameworks, {counts['books']} books, {counts['pages']} pages into _site/")
     if counts["scheduled"]:
         print(f"Scheduled for later (hidden until their date): {', '.join(counts['scheduled'])}")
     if "--serve" in sys.argv:

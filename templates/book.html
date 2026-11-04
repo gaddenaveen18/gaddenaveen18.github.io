@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% set title = item.title %}
+{% set description = item.excerpt %}
+{% set og_type = "book" %}
+{% set og_image = item.meta.get('cover') %}
+{% set og_image_alt = "Cover of " ~ item.title %}
+{% block content %}
+<article class="article book-page">
+  <div class="wrap book-hero">
+    <a class="book-hero-cover" href="{{ base }}/assets/{{ item.meta.pdf }}" title="Download the PDF">
+      <img src="{{ base }}/assets/{{ item.meta.cover }}" alt="Cover of {{ item.title }}" width="300" height="375">
+    </a>
+    <div class="book-hero-text">
+      <p class="series-kicker">Thought Experiments for the Superintelligence Era · Vol. {{ item.meta.volume }}</p>
+      <h1>{{ item.title }}</h1>
+      {% if item.meta.get('opening') %}<p class="book-opening">{{ item.meta.opening }}</p>{% endif %}
+      <p class="intro-links">
+        <a class="button" href="{{ base }}/assets/{{ item.meta.pdf }}" download>Download the free PDF</a>
+        {% if item.meta.get('linkedin_url') %}<a class="button quiet" href="{{ item.meta.linkedin_url }}" rel="noopener">Discuss on LinkedIn</a>{% endif %}
+      </p>
+      <p class="book-facts">10 pages · about 10 minutes · fillable answer boxes{% if item.date %} · Released <time datetime="{{ item.date.isoformat() }}">{{ item.date|date }}</time>{% endif %}</p>
+      {% if item.meta.source %}<p class="book-facts">Based on the post <a href="{{ base }}{{ item.meta.source.url }}">{{ item.meta.source.title }}</a></p>{% endif %}
+    </div>
+  </div>
+  {% if item.meta.get('audio') %}
+  <div class="wrap narrow book-audio" id="listen">
+    <h2>Listen</h2>
+    <audio controls preload="none" src="{{ base }}/assets/{{ item.meta.audio }}"></audio>
+  </div>
+  {% endif %}
+  <div class="wrap narrow prose">
+    {% if item.meta.key_ideas %}
+    <h2>Key ideas in one minute</h2>
+    <ol class="key-ideas">{% for k in item.meta.key_ideas %}<li>{{ k }}</li>{% endfor %}</ol>
+    {% endif %}
+    {{ item.body_html|safe }}
+    {% if item.meta.get('signature') %}<blockquote>{{ item.meta.signature }}</blockquote>{% endif %}
+  </div>
+  <footer class="wrap narrow article-foot">
+    <p class="book-license">Free to read and share. Please keep my name with it, and do not sell or alter it. Views are my own and do not represent any current or past employer.</p>
+    <p class="more"><a href="{{ base }}/books/">All books in the series</a></p>
+  </footer>
+</article>
+{% endblock %}

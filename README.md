@@ -16,6 +16,7 @@ in about a minute.
 | `site.json` | Your name, tagline, LinkedIn link and web address. **Edit this first.** |
 | `posts/` | One file per post. `_TEMPLATE.md` shows the format. |
 | `frameworks/` | One file per framework (The Question Loop is already there). |
+| `books/` | One file per book; covers and PDFs live in `static/books/`. |
 | `pages/about.md` | Your About page. |
 | `templates/`, `static/` | Page layouts, styling and fonts. You won't need to touch these. |
 | `build.py` | Turns your text files into the website. GitHub runs it for you. |
@@ -126,6 +127,31 @@ is shared on LinkedIn. JPG or PNG, ideally under 500 KB.
 
 To fix a typo, open the post file on GitHub, click the pencil, edit, and commit.
 To hide a post without deleting it, add `draft: true` inside the `---` block.
+
+---
+
+## Books
+
+Each book has one text file in `books/` and two files in `static/books/`
+(the cover `.jpg` and the `.pdf`). They appear on the **Books** page, on the
+homepage, and in the menu.
+
+**Release dates:** each book file has a `date:` line. A book stays hidden until
+that date, then appears automatically (the site rebuilds every morning).
+To change a release date, open the book's file, click the pencil, edit the
+date and commit.
+
+**Adding the audio version later:**
+1. Upload the MP3 into `static/books/` (**Add file** > **Upload files**), named
+   like the PDF, e.g. `vol1-perfect-knowledge-vs-imperfect-brilliance.mp3`.
+2. In the book's file, remove the `# ` at the start of the `# audio:` line.
+3. Commit. A **Listen** player appears on the book's page.
+
+**Linking the LinkedIn post:** remove the `# ` from `# linkedin_url:` and paste
+the post's link after the colon.
+
+**Replacing a PDF** (e.g. after a correction): upload the new file with the
+exact same name into `static/books/`. GitHub replaces the old one.
 
 ---
 

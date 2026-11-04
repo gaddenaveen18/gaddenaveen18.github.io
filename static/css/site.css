@@ -178,3 +178,33 @@ h1 { font-size: clamp(2.1rem, 5vw, 3rem); font-variation-settings: "opsz" 60; }
   .prose { font-size: 1.1rem; }
   .feature-card { padding: 1.5rem; }
 }
+
+/* ---------- books ---------- */
+.books-sub { max-width: 40rem; }
+.books { padding: 1rem 0 2rem; }
+.books-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); gap: 2.5rem 2rem; }
+.book-card { display: grid; gap: .45rem; align-content: start; }
+.book-cover-link img, .book-row img, .book-hero-cover img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 24px rgba(13,20,34,.18); }
+.book-cover-link:hover img, .book-row a:hover img { transform: translateY(-2px); transition: transform .15s ease; }
+.book-vol, .book-row-vol { font-family: var(--sans); font-size: .8rem; font-weight: 600; color: var(--accent); margin-top: .6rem; }
+.book-title { font-size: 1.2rem; font-weight: 600; line-height: 1.25; color: var(--ink); text-decoration: none; }
+.book-title:hover { color: var(--accent); }
+.book-question { color: var(--muted); font-size: .98rem; line-height: 1.5; }
+.book-actions { display: flex; gap: 1rem; font-family: var(--sans); font-size: .9rem; font-weight: 500; margin-top: .2rem; }
+
+.books-strip { padding: 2.5rem 0 1rem; }
+.book-row { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr)); gap: 1.25rem; }
+.book-row a { display: grid; gap: .15rem; color: inherit; text-decoration: none; }
+.book-row-title { font-size: .95rem; font-weight: 600; line-height: 1.25; }
+.book-row a:hover .book-row-title { color: var(--accent); }
+
+.book-hero { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 3rem; align-items: center; margin-bottom: 2.5rem; }
+.book-hero-cover { display: block; }
+.book-opening { font-size: 1.25rem; line-height: 1.55; font-style: italic; color: var(--muted); max-width: 34rem; }
+.book-facts { font-family: var(--sans); font-size: .9rem; color: var(--muted); margin: .4rem 0 0; }
+.book-audio { margin-bottom: 2rem; }
+.book-audio h2 { font-size: 1.25rem; }
+.book-audio audio { width: 100%; }
+.key-ideas li { margin-bottom: .6em; }
+.book-license { font-family: var(--sans); font-size: .85rem; color: var(--muted); }
+@media (max-width: 720px) { .book-hero { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; } .book-hero-cover { max-width: 14rem; } }
