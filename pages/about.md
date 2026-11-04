@@ -12,7 +12,7 @@ At **LPL Financial**, as AVP of Systems Engineering (SRE), I focus on production
 - Built LPL's first non-production command center, a 24/7 operation run with vendor partners.
 - Helped create the structure teams use to prove a system is ready for production.
 - Serve as an approver on the Change Advisory Board.
-- Led a Java migration of critical applications with zero escalations or priority incidents, saving $700K a year.
+- Led a Java migration of critical applications.
 - Delivered a proof of concept for AI-assisted incident resolution, and I'm now starting an AIOps framework integrated with Dynatrace and other monitoring tools.
 
 ## Before that
@@ -20,7 +20,7 @@ At **LPL Financial**, as AVP of Systems Engineering (SRE), I focus on production
 For over a decade I worked with **Volkswagen Group of America** in the U.S., most recently as Middleware Integration Team Lead.
 
 - Built Volkswagen's first Middleware Command Center.
-- Led a 24/7 support team of 16 engineers across three support levels.
+- Led a 24/7 support team across multiple support levels.
 - Managed key platforms, including the Parts on Command e-commerce portal.
 - Set up the IT infrastructure for parts distribution centers, including scanning and shipping equipment and SAP integrations.
 
