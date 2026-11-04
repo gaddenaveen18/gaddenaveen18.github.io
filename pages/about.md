@@ -1,35 +1,16 @@
 ---
 title: About
-summary: Naveen Gadde leads site reliability and production operations in the United States, with more than 15 years of enterprise experience in financial services and automotive.
+summary: IT leader with two decades of experience driving Site Reliability Engineering, cloud infrastructure and middleware integration for large-scale, complex technology environments.
 ---
 
-I'm Naveen Gadde, a site reliability and production operations leader based in Austin, Texas. For more than 15 years I've built and run the teams, processes and command centers that keep critical systems available, mostly at large U.S. enterprises in financial services and automotive.
+I'm an IT leader with two decades of experience driving Site Reliability Engineering, cloud infrastructure, and middleware integration for large-scale, complex technology environments. I simplify and execute demanding programs that others find hard to untangle — and I bring a track record of credibility across every team I've led.
 
-## What I do now
+Across my career, I've partnered on technology roadmaps, led proof-of-concept initiatives from idea to production, and mentored global teams to support business growth. My strength is operational: I turn ambiguity into a working system, and complexity into something a team can actually run.
 
-At **LPL Financial**, as AVP of Systems Engineering (SRE), I focus on production readiness and the stability of releases and changes for the platforms financial advisors rely on every day.
+Selfless in Serving && Boundless in Accomplishing — that's the philosophy behind how I lead. My aspiration is simple: an impactful career and an impactful life, where the two aren't separate pursuits but one continuous practice of showing up fully for people and problems alike.
 
-- Built LPL's first non-production command center, a 24/7 operation run with vendor partners.
-- Helped create the structure teams use to prove a system is ready for production.
-- Serve as an approver on the Change Advisory Board.
-- Led a Java migration of critical applications.
-- Delivered a proof of concept for AI-assisted incident resolution, and I'm now starting an AIOps framework integrated with Dynatrace and other monitoring tools.
+My curiosity for learning has taken me across three countries — India, Scotland, and the USA — where I've earned a Bachelor's, two Master's degrees, and a Post-Master's across complementary disciplines.
 
-## Before that
+Outside of work, I write poetry rooted in a belief in the power of human emotion and expression, and find purpose in helping people when they need it most.
 
-For over a decade I worked with **Volkswagen Group of America** in the U.S., most recently as Middleware Integration Team Lead.
-
-- Built Volkswagen's first Middleware Command Center.
-- Led a 24/7 support team across multiple support levels.
-- Managed key platforms, including the Parts on Command e-commerce portal.
-- Set up the IT infrastructure for parts distribution centers, including scanning and shipping equipment and SAP integrations.
-
-## How I work
-
-> Selfless in Serving && Boundless in Accomplishing
-
-I hold a Post-Master's in Management Information Systems from Oakland University in Michigan.
-
-## This site
-
-From time to time I publish *A Thought Experiment* on LinkedIn: one idea about leadership, engineering or work, looked at from a different angle. This site collects those posts, the frameworks that come out of them and the short books built from them, so they're easy to find and share.
+Always open to connecting with fellow leaders, technologists, and anyone building something meaningful.
