@@ -170,8 +170,9 @@ def test_books_appear_on_their_release_date(site):
     from datetime import date
     copy, build, _ = site
     out = copy / "_site"
-    early = build.build(out, today=date(2026, 11, 3))
-    assert early["books"] == 1
+    assert build.build(out, today=date(2026, 11, 4))["books"] == 0  # nothing before launch day
+    early = build.build(out, today=date(2026, 11, 5))
+    assert early["books"] == 2  # Vol. 1 and Vol. 2 launch together
     page = (out / "books" / "perfect-knowledge-vs-imperfect-brilliance" / "index.html").read_text()
     assert "Download the free PDF" in page and "Key ideas in one minute" in page
     assert 'href="/books/"' in (out / "index.html").read_text()  # nav + home strip
@@ -198,9 +199,9 @@ def test_post_links_to_its_book_once_released(site):
     from datetime import date
     copy, build, _ = site
     out = copy / "_site"
-    build.build(out, today=date(2026, 11, 6))
-    post = (out / "posts" / "right-questions-vs-right-answers" / "index.html").read_text()
-    assert "Go deeper" not in post  # Vol. 2 not released until Monday
-    build.build(out, today=date(2026, 11, 9))
+    build.build(out, today=date(2026, 11, 12))
+    post = (out / "posts" / "winning-over-winners" / "index.html").read_text()
+    assert "Go deeper" not in post  # Vol. 3 not released until Monday
+    build.build(out, today=date(2026, 11, 5))
     post = (out / "posts" / "right-questions-vs-right-answers" / "index.html").read_text()
     assert 'href="/books/right-questions-vs-right-answers/"' in post and "Go deeper" in post

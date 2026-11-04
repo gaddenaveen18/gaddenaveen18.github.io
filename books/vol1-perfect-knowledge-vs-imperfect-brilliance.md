@@ -2,7 +2,7 @@
 title: Perfect Knowledge vs. Imperfect Brilliance
 slug: perfect-knowledge-vs-imperfect-brilliance
 volume: 1
-date: 2026-11-03
+date: 2026-11-05
 summary: If intelligence never made a wrong turn, what discoveries might it never make?
 opening: Imagine an intelligence with access to everything humanity has recorded. Then imagine a human: imperfect, distracted, and often wrong. If intelligence never made a wrong turn, what discoveries might it never make?
 cover: books/vol1-perfect-knowledge-vs-imperfect-brilliance.jpg
