@@ -209,5 +209,5 @@ h1 { font-size: clamp(2.1rem, 5vw, 3rem); font-variation-settings: "opsz" 60; }
 .book-license { font-family: var(--sans); font-size: .85rem; color: var(--muted); }
 @media (max-width: 720px) { .book-hero { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; } .book-hero-cover { max-width: 14rem; } }
 
-.post-book { font-family: var(--sans); font-size: .98rem; background: var(--accent-soft); border-radius: 6px; padding: 1rem 1.2rem; display: grid; gap: .35rem; }
-.post-book a { font-weight: 600; }
+.post-book { font-family: var(--sans); font-size: .98rem; background: var(--accent-soft); border-radius: 6px; padding: 1rem 1.2rem; }
+.post-book a { display: block; margin-top: .45rem; font-weight: 600; }
