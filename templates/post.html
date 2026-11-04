@@ -25,6 +25,10 @@
     {{ item.body_html|safe }}
   </div>
   <footer class="wrap narrow article-foot">
+    {% if item.meta.get('book') %}
+      <p class="post-book">📘 <strong>Go deeper:</strong> this thought experiment is also a free 10-minute micro-book, with space to write your own answers.
+        <a href="{{ base }}{{ item.meta.book.url }}">Read Vol. {{ item.meta.book.meta.volume }}: {{ item.meta.book.title }}</a></p>
+    {% endif %}
     {% if item.meta.get('linkedin_url') %}
       <p><a class="button quiet" href="{{ item.meta.linkedin_url }}" rel="noopener">Join the discussion on LinkedIn</a></p>
     {% endif %}

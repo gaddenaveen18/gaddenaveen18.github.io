@@ -2,13 +2,14 @@
 title: Growth Through Giving
 slug: growth-through-giving
 volume: 7
-date: 2027-02-04
+date: 2026-12-14
 summary: Who gave, and who grew?
 opening: Imagine you teach someone everything you know. Years later, they are teaching you. Who gave, and who grew?
 cover: books/vol7-growth-through-giving.jpg
 pdf: books/vol7-growth-through-giving.pdf
 signature: The more you give, the more fulfilled you become.
 key_ideas: Growth and giving are two sides of one loop. | Give a specific, usable skill, not vague goodwill. | Listen more than you advise. Exposure widens perspective. | What you just learned becomes your next thing to give.
+source_post: Growth Through Giving
 # Add later, when ready:
 # audio: books/vol7-growth-through-giving.mp3
 # linkedin_url: (link to the LinkedIn post for this book)

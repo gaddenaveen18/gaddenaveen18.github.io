@@ -2,7 +2,7 @@
 title: Right Questions vs. Right Answers
 slug: right-questions-vs-right-answers
 volume: 2
-date: 2026-11-19
+date: 2026-11-09
 summary: How fast would a perfect answer take you somewhere you never meant to go?
 opening: Imagine an intelligence that can answer any question instantly. Now imagine the question is slightly wrong. How fast would a perfect answer take you somewhere you never meant to go?
 cover: books/vol2-right-questions-vs-right-answers.jpg

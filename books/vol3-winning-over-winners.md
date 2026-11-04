@@ -2,7 +2,7 @@
 title: Winning Over Winners
 slug: winning-over-winners
 volume: 3
-date: 2026-12-03
+date: 2026-11-16
 summary: When everyone has it, how do you stand out?
 opening: Imagine everyone around you has the same superintelligence. The same answers, the same speed, the same analysis. When everyone has it, how do you stand out?
 cover: books/vol3-winning-over-winners.jpg

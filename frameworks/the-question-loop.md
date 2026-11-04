@@ -1,6 +1,6 @@
 ---
 title: The Question Loop
-date: 2026-11-19
+date: 2026-11-05
 source_post: Right Questions vs. Right Answers
 diagram: question-loop
 stages: Question, Understanding, Options, Ownership, Action, Outcome, Better Question

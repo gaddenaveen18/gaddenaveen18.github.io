@@ -183,6 +183,9 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     for f in frameworks + books:
         src = f.meta.get("source_post", "").lower()
         f.meta["source"] = by_title.get(src)
+    by_book_source = {b.meta.get("source_post", "").lower(): b for b in books if b.meta.get("source_post")}
+    for p in posts:
+        p.meta["book"] = by_book_source.get(p.title.lower())
     for b in books:
         b.meta["key_ideas"] = [k.strip() for k in b.meta.get("key_ideas", "").split("|") if k.strip()]
 

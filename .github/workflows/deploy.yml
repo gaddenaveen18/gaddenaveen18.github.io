@@ -6,9 +6,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # Rebuild every morning (about 6-7am Central) so scheduled posts appear on their date
+  # Rebuild every morning (about 5am Central in winter, 6am in summer) so scheduled posts and books appear before 7am
   schedule:
-    - cron: "17 12 * * *"
+    - cron: "7 11 * * *"
 
 permissions:
   contents: read

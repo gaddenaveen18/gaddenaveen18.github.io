@@ -32,7 +32,7 @@ def test_builds_with_no_posts(site):
     for f in list((copy / "posts").glob("2026-*.md")) + list((copy / "books").glob("*.md")):
         f.unlink()  # start from an empty site
     for f in (copy / "frameworks").glob("*.md"):
-        f.write_text(f.read_text().replace("date: 2026-11-19\n", ""))
+        f.write_text(f.read_text().replace("date: 2026-11-05\n", ""))
     counts = build.build(copy / "_site")
     assert counts == {"posts": 0, "frameworks": 1, "books": 0, "pages": 1, "scheduled": []}
     home = (copy / "_site" / "index.html").read_text()
@@ -149,7 +149,7 @@ def test_real_posts_build_with_images(site):
     out = copy / "_site"
     early = build.build(out, today=date(2026, 11, 1))
     assert early["posts"] == 0 and early["frameworks"] == 0  # everything scheduled
-    assert len(early["scheduled"]) == 3
+    assert len(early["scheduled"]) == 6
     late = build.build(out, today=date(2026, 11, 20))
     assert late == {**late, "posts": 3, "frameworks": 1}
     page = (out / "posts" / "winning-over-winners" / "index.html").read_text()
@@ -192,3 +192,15 @@ def test_missing_book_file_is_reported(site):
     (copy / "books" / "vol9-x.md").write_text("---\ntitle: X\nvolume: 9\ncover: books/nope.jpg\npdf: books/nope.pdf\n---\nbody")
     with pytest.raises(build.ContentError, match="not found in static"):
         build.build(copy / "_site")
+
+
+def test_post_links_to_its_book_once_released(site):
+    from datetime import date
+    copy, build, _ = site
+    out = copy / "_site"
+    build.build(out, today=date(2026, 11, 6))
+    post = (out / "posts" / "right-questions-vs-right-answers" / "index.html").read_text()
+    assert "Go deeper" not in post  # Vol. 2 not released until Monday
+    build.build(out, today=date(2026, 11, 9))
+    post = (out / "posts" / "right-questions-vs-right-answers" / "index.html").read_text()
+    assert 'href="/books/right-questions-vs-right-answers/"' in post and "Go deeper" in post
