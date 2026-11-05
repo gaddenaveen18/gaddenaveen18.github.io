@@ -21,7 +21,7 @@
         <a class="book-title" href="{{ base }}{{ b.url }}">{{ b.title }}</a>
         <span class="book-question">{{ b.excerpt }}</span>
         <span class="book-actions">
-          <a href="{{ base }}/assets/{{ b.meta.pdf }}" download>Download PDF</a>
+          <a href="{{ base }}/assets/{{ b.meta.pdf }}" download data-goatcounter-click="pdf-vol{{ b.meta.volume }}" data-goatcounter-title="PDF download: {{ b.title }}">Download PDF</a>
           {% if b.meta.get('audio') %}<a href="{{ base }}{{ b.url }}#listen">Listen</a>{% endif %}
         </span>
       </li>

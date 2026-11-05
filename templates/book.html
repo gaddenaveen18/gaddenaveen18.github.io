@@ -15,7 +15,7 @@
       <h1>{{ item.title }}</h1>
       {% if item.meta.get('opening') %}<p class="book-opening">{{ item.meta.opening }}</p>{% endif %}
       <p class="intro-links">
-        <a class="button" href="{{ base }}/assets/{{ item.meta.pdf }}" download>Download the free PDF</a>
+        <a class="button" href="{{ base }}/assets/{{ item.meta.pdf }}" download data-goatcounter-click="pdf-vol{{ item.meta.volume }}" data-goatcounter-title="PDF download: {{ item.title }}">Download the free PDF</a>
         {% if item.meta.get('linkedin_url') %}<a class="button quiet" href="{{ item.meta.linkedin_url }}" rel="noopener">Discuss on LinkedIn</a>{% endif %}
       </p>
       <p class="book-facts">10 pages · about 10 minutes · fillable answer boxes{% if item.date %} · Released <time datetime="{{ item.date.isoformat() }}">{{ item.date|date }}</time>{% endif %}</p>
