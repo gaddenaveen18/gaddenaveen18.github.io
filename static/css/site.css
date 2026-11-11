@@ -211,3 +211,22 @@ h1 { font-size: clamp(2.1rem, 5vw, 3rem); font-variation-settings: "opsz" 60; }
 
 .post-book { font-family: var(--sans); font-size: .98rem; background: var(--accent-soft); border-radius: 6px; padding: 1rem 1.2rem; }
 .post-book a { display: block; margin-top: .45rem; font-weight: 600; }
+
+/* Audiobooks catalog */
+.audiobooks { padding: 0 0 4rem; }
+.audiobook-series + .audiobook-series { margin-top: 3rem; }
+.audiobook-series h2 { margin-bottom: .4rem; }
+.audio-legend { display: flex; gap: 1rem; margin: 0 0 1rem; font-size: .9rem; }
+.status-live { color: #16833b; font-weight: 700; }
+.status-soon, .coming-soon { color: var(--muted, #6b7280); }
+.audio-table-wrap { overflow-x: auto; border: 1px solid var(--line, #d8d8d8); border-radius: .65rem; }
+.audio-table { width: 100%; min-width: 860px; border-collapse: collapse; background: var(--paper, #fff); }
+.audio-table th, .audio-table td { padding: .85rem .9rem; border-bottom: 1px solid var(--line, #e5e5e5); text-align: left; vertical-align: middle; }
+.audio-table thead th { background: var(--soft, #f7f7f5); font-size: .9rem; }
+.audio-table tbody tr:last-child th, .audio-table tbody tr:last-child td { border-bottom: 0; }
+.audio-table tbody th { min-width: 250px; }
+.audio-vol { display: block; font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted, #6b7280); }
+.audio-title { display: block; margin-top: .18rem; font-weight: 700; }
+.spotify-link { white-space: nowrap; font-weight: 700; }
+.coming-soon { white-space: nowrap; font-size: .9rem; }
+.audio-note { margin-top: 1rem; color: var(--muted, #6b7280); font-size: .9rem; }

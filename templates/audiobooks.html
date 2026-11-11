@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% set title = "Audiobooks" %}
+{% set description = "Listen to Naveen Gadde's audiobook series on Spotify in English, Spanish, German, French, Portuguese and Hindi." %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <p class="series-kicker">Listen on Spotify</p>
+    <h1>Audiobooks</h1>
+    <p class="page-sub books-sub">Choose a series, volume and language. Live editions open directly in Spotify; upcoming editions are clearly marked.</p>
+  </div>
+</section>
+<section class="audiobooks">
+  <div class="wrap">
+    {% for series in audiobook_catalog.series %}
+    <section class="audiobook-series" aria-labelledby="series-{{ loop.index }}">
+      <h2 id="series-{{ loop.index }}">{{ series.name }}</h2>
+      <p class="audio-legend"><span class="status-live">â— Live</span> <span class="status-soon">â—‹ Coming soon</span></p>
+      <div class="audio-table-wrap" tabindex="0" aria-label="Scrollable audiobook availability table">
+        <table class="audio-table">
+          <thead><tr><th scope="col">Volume</th>{% for language in audiobook_catalog.languages %}<th scope="col">{{ language }}</th>{% endfor %}</tr></thead>
+          <tbody>
+          {% for volume in series.volumes %}
+          <tr>
+            <th scope="row"><span class="audio-vol">Vol. {{ volume.volume }}</span><span class="audio-title">{{ volume.title }}</span></th>
+            {% for language in audiobook_catalog.languages %}
+              {% set spotify_url = volume.languages.get(language) %}
+              <td>{% if spotify_url %}<a class="spotify-link" href="{{ spotify_url }}" target="_blank" rel="noopener" data-goatcounter-click="spotify-vol{{ volume.volume }}-{{ language|lower }}" data-goatcounter-title="Spotify: Vol. {{ volume.volume }} {{ language }}">Listen on Spotify</a>{% else %}<span class="coming-soon">Coming soon</span>{% endif %}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endfor %}
+    <p class="audio-note">Digitally narrated editions are identified on Spotify. Availability may vary by market.</p>
+  </div>
+</section>
+{% endblock %}

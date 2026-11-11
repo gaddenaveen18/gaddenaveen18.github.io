@@ -66,7 +66,7 @@ class ContentError(Exception):
 
 def parse_front_matter(text: str, path: Path) -> tuple[dict, str]:
     """Read the 'key: value' block between --- lines at the top of a file."""
-    text = text.lstrip("﻿")
+    text = text.lstrip("ï»¿")
     if not text.startswith("---"):
         return {}, text
     parts = text.split("\n---", 1)
@@ -97,7 +97,7 @@ def plain_excerpt(body_html: str, limit: int = 220) -> str:
     if len(text) <= limit:
         return text
     cut = text[:limit].rsplit(" ", 1)[0]
-    return cut.rstrip(",.;:") + "…"
+    return cut.rstrip(",.;:") + "â€¦"
 
 
 def slugify(text: str) -> str:
@@ -172,6 +172,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     posts = sorted(load_folder(ROOT / "posts", "post", today), key=lambda p: (p.date, p.slug), reverse=True)
     frameworks = load_folder(ROOT / "frameworks", "framework", today)
     books = sorted(load_folder(ROOT / "books", "book", today), key=lambda b: int(b.meta.get("volume", "0") or 0))
+    audiobook_catalog = json.loads((ROOT / "audiobooks.json").read_text(encoding="utf-8"))
     pages = load_folder(ROOT / "pages", "page")
     series_label = cfg.get("series_label", "")
     series_posts = [p for p in posts if p.meta.get("series") == "thought-experiment"]
@@ -194,7 +195,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     env.filters["date"] = format_date
     env.globals.update(cos=math.cos, sin=math.sin)
     env.globals.update(site=cfg, base=base, site_url=site_url, series_label=series_label,
-                       nav_frameworks=frameworks, nav_books=bool(books), year=datetime.now().year)
+                       nav_frameworks=frameworks, nav_books=bool(books), nav_audiobooks=bool(audiobook_catalog.get("series")), year=datetime.now().year)
 
     if out.exists():
         shutil.rmtree(out)
@@ -214,6 +215,8 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
         write(f.url, "framework.html", item=f)
     if books:
         write("/books/", "books.html", books=books)
+    if audiobook_catalog.get("series"):
+        write("/audiobooks/", "audiobooks.html", audiobook_catalog=audiobook_catalog)
     for b in books:
         write(b.url, "book.html", item=b)
     for pg in pages:
@@ -221,7 +224,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     write("404.html", "404.html")
     write("feed.xml", "feed.xml", posts=posts[:30],
           updated=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/books/"] if books else []) + [i.url for i in posts + frameworks + books + pages])
+    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/books/"] if books else []) + (["/audiobooks/"] if audiobook_catalog.get("series") else []) + [i.url for i in posts + frameworks + books + pages])
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n", encoding="utf-8")
     (out / ".nojekyll").write_text("", encoding="utf-8")
     if cfg.get("custom_domain"):
