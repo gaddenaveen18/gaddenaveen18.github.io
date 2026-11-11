@@ -66,7 +66,7 @@ class ContentError(Exception):
 
 def parse_front_matter(text: str, path: Path) -> tuple[dict, str]:
     """Read the 'key: value' block between --- lines at the top of a file."""
-    text = text.lstrip("ï»¿")
+    text = text.lstrip("Ã¯Â»Â¿")
     if not text.startswith("---"):
         return {}, text
     parts = text.split("\n---", 1)
@@ -97,7 +97,7 @@ def plain_excerpt(body_html: str, limit: int = 220) -> str:
     if len(text) <= limit:
         return text
     cut = text[:limit].rsplit(" ", 1)[0]
-    return cut.rstrip(",.;:") + "â€¦"
+    return cut.rstrip(",.;:") + "Ã¢â‚¬Â¦"
 
 
 def slugify(text: str) -> str:
