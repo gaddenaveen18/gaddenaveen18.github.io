@@ -1,5 +1,7 @@
 ---
 title: Recursive Structures for Smarter Models
+topic: AI & Data
+order: 6
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: Mathematics is proportional to Predictive Analytics — AI within Method (Recursive Structures for Smarter Models)

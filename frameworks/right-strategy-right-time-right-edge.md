@@ -1,5 +1,7 @@
 ---
 title: "Right Strategy, Right Time, Right Edge: Data Strategy in the AI Era"
+topic: AI & Data
+order: 3
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: Right Strategy at Right Time give Right Edge - Data Strategy in AI Era

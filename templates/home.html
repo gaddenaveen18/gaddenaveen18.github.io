@@ -1,18 +1,26 @@
 {% extends "base.html" %}
-{% from "_macros.html" import post_row, question_loop %}
+{% from "_macros.html" import post_row, question_loop, card, subscribe_box %}
 {% block content %}
-{% set loop_fw = frameworks|selectattr('meta.diagram', 'equalto', 'question-loop')|list %}
+{% set loop_fw = [] if site.get('photo') else frameworks|selectattr('meta.diagram', 'equalto', 'question-loop')|list %}
 <section class="intro">
-  <div class="wrap intro-grid{% if not loop_fw %} solo{% endif %}">
+  <div class="wrap intro-grid{% if not loop_fw and not site.get('photo') %} solo{% endif %}">
     <div>
       <p class="intro-lede">{{ site.tagline }}</p>
       <p class="intro-body">I write <em>{{ series_label }}</em>, a series I publish from time to time: one idea about leadership, engineering or work, examined from a different angle. This site keeps every post, framework and book in one place.</p>
       <p class="intro-links">
-        <a class="button" href="{{ base }}/posts/">Read the writing</a>
-        {% if 'YOUR-' not in site.linkedin_url %}<a class="button quiet" href="{{ site.linkedin_url }}" rel="me noopener">Follow on LinkedIn</a>{% endif %}
+        <a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>
+        {% if site.get('substack_url') %}<a class="button quiet" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe free</a>{% endif %}
       </p>
     </div>
-    {% if loop_fw %}
+    {% if site.get('photo') %}
+    <a class="intro-person" href="{{ base }}/about/">
+      <img src="{{ base }}/assets/{{ site.photo }}" alt="Photo of {{ site.author }}" width="320" height="320">
+      <span class="intro-person-text">
+        <span class="intro-person-bio">{{ site.get('short_bio', '') }}</span>
+        {% if site.get('motto') %}<span class="intro-person-motto">{{ site.motto }}</span>{% endif %}
+      </span>
+    </a>
+    {% elif loop_fw %}
     <a class="intro-figure" href="{{ base }}{{ loop_fw[0].url }}" aria-label="Open {{ loop_fw[0].title }}">
       {{ question_loop(loop_fw[0].meta.stages.split(',')|map('trim')|list, label=loop_fw[0].title) }}
       <span class="figure-caption">{{ loop_fw[0].title }}, a framework from the series</span>
@@ -51,6 +59,22 @@
 </section>
 {% endif %}
 
+{% if latest_frameworks %}
+<section class="frameworks">
+  <div class="wrap">
+    <h2 class="section-title">Latest frameworks</h2>
+    <ul class="cards cards-strip">
+      {% for f in latest_frameworks %}{{ card(f) }}{% endfor %}
+    </ul>
+    {% if frameworks|length > latest_frameworks|length %}<p class="more"><a href="{{ base }}/frameworks/">All {{ frameworks|length }} frameworks</a></p>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section class="home-subscribe">
+  <div class="wrap">{{ subscribe_box() }}</div>
+</section>
+
 <section class="recent">
   <div class="wrap"><div class="col">
     <h2 class="section-title">Recent writing</h2>
@@ -65,16 +89,5 @@
   </div></div>
 </section>
 
-{% if frameworks %}
-<section class="frameworks">
-  <div class="wrap"><div class="col">
-    <h2 class="section-title">Frameworks</h2>
-    <ul class="fw-list">
-      {% for f in frameworks %}
-      <li><a href="{{ base }}{{ f.url }}"><span class="fw-title">{{ f.title }}</span><span class="fw-summary">{{ f.excerpt }}</span></a></li>
-      {% endfor %}
-    </ul>
-  </div></div>
-</section>
-{% endif %}
+
 {% endblock %}

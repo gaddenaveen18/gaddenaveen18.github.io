@@ -1,5 +1,7 @@
 ---
 title: The 7-Layer Autonomous Observability Architecture
+topic: Reliability & Operations
+order: 7
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: The 7-Layer Autonomous Observability Architecture

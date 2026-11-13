@@ -1,5 +1,7 @@
 ---
 title: "True Efficiency in the AI Era: Augmentation vs Substitution"
+topic: Leadership & Mindset
+order: 2
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: True Efficiency in the AI Era (AI-Augmentation vs AI-Substitution)

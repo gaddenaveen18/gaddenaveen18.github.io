@@ -1,5 +1,7 @@
 ---
 title: "Deceptive Movement: AI in Cyber Security"
+topic: Security
+order: 8
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: AI in IT security

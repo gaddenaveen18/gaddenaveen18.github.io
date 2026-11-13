@@ -1,5 +1,7 @@
 ---
 title: The AI Fallback Hierarchy
+topic: Reliability & Operations
+order: 5
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: AI Solutioning Within Engineering Principles (Fallback Hierarchy)

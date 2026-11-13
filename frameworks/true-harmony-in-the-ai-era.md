@@ -1,5 +1,7 @@
 ---
 title: "True Harmony in the AI Era: Intellect + Intelligence"
+topic: Leadership & Mindset
+order: 1
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: True Harmony - In AI Era
