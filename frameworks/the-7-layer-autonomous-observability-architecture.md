@@ -1,4 +1,5 @@
 ---
+draft: true
 title: The 7-Layer Autonomous Observability Architecture
 date: 2026-11-13
 publish_at: 2026-11-13 21:00

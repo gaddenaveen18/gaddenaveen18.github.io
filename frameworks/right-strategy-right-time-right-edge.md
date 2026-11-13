@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Right Strategy, Right Time, Right Edge: Data Strategy in the AI Era"
 date: 2026-11-13
 publish_at: 2026-11-13 21:00

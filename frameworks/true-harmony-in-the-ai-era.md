@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "True Harmony in the AI Era: Intellect + Intelligence"
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
