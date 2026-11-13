@@ -1,7 +1,5 @@
 ---
 title: "Token Optimization: Leave Logic to AI, Keep Common Sense Human"
-topic: AI & Data
-order: 4
 date: 2026-11-13
 publish_at: 2026-11-13 21:00
 source_post: Look for solution helps more than look at the problem - Token usage efficiencies in AI Era

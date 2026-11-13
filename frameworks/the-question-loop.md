@@ -1,6 +1,5 @@
 ---
 title: The Question Loop
-topic: Leadership & Mindset
 date: 2026-11-05
 source_post: Right Questions vs. Right Answers
 diagram: question-loop

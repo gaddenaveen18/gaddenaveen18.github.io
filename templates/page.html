@@ -1,29 +1,9 @@
 {% extends "base.html" %}
-{% from "_macros.html" import subscribe_box %}
 {% set title = item.title %}
 {% set description = item.excerpt %}
 {% block content %}
 <article class="article">
-  {% set is_about = path.startswith('/about') %}
-  <header class="wrap narrow article-head{% if is_about and site.get('photo') %} about-head{% endif %}">
-    {% if is_about and site.get('photo') %}<img class="about-photo" src="{{ base }}/assets/{{ site.photo }}" alt="Photo of {{ site.author }}" width="320" height="320">{% endif %}
-    <div>
-      <h1>{{ item.title }}</h1>
-      {% if is_about and site.get('motto') %}<p class="fw-tagline">{{ site.motto }}</p>{% endif %}
-    </div>
-  </header>
-  <div class="wrap narrow prose">
-    {% if is_about and site.get('short_bio') %}<p class="about-lede">{{ site.short_bio }}</p>{% endif %}
-    {{ item.body_html|safe }}
-  </div>
-  {% if is_about %}
-  <div class="wrap narrow article-foot">
-    <p class="connect"><strong>Connect:</strong>
-      {% if 'YOUR-' not in site.linkedin_url %}<a href="{{ site.linkedin_url }}" rel="me noopener">LinkedIn</a>{% endif %}
-      {% if site.get('substack_url') %}<a href="{{ site.substack_url }}" rel="me noopener">Substack</a>{% endif %}
-      <a href="{{ base }}/frameworks/">Frameworks</a> <a href="{{ base }}/books/">Books</a></p>
-    {{ subscribe_box() }}
-  </div>
-  {% endif %}
+  <header class="wrap narrow article-head"><h1>{{ item.title }}</h1></header>
+  <div class="wrap narrow prose">{{ item.body_html|safe }}</div>
 </article>
 {% endblock %}

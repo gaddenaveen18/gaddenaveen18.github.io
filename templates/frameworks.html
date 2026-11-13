@@ -1,27 +1,20 @@
 {% extends "base.html" %}
-{% from "_macros.html" import card %}
 {% set title = "Frameworks" %}
 {% set description = "Frameworks by Naveen Gadde: simple models for leadership, reliability and work, each introduced in a post." %}
 {% block content %}
 <section class="page-head">
   <div class="wrap">
     <h1>Frameworks</h1>
-    <p class="page-sub">Simple models for leadership, AI, reliability and work. {{ frameworks|length }} so far, newest first.</p>
-    {% if topics|length > 1 %}
-    <div class="chips" role="group" aria-label="Filter by topic" hidden>
-      <button type="button" class="chip" aria-pressed="true" data-topic="">All</button>
-      {% for t in topics %}<button type="button" class="chip" aria-pressed="false" data-topic="{{ t }}"{% if topic_colors.get(t) %} style="--t: {{ topic_colors[t] }}"{% endif %}>{{ t }}</button>{% endfor %}
-    </div>
-    {% endif %}
+    <p class="page-sub">Simple models for leadership, reliability and work, each one introduced in a post.</p>
   </div>
 </section>
-<section class="cards-section">
-  <div class="wrap">
-    <ul class="cards" data-page-size="{{ page_size }}">
-      {% for f in frameworks %}{{ card(f, eager=loop.index <= 4) }}{% endfor %}
+<section class="frameworks">
+  <div class="wrap"><div class="col">
+    <ul class="fw-list">
+      {% for f in frameworks %}
+      <li><a href="{{ base }}{{ f.url }}"><span class="fw-title">{{ f.title }}</span><span class="fw-summary">{{ f.excerpt }}</span></a></li>
+      {% endfor %}
     </ul>
-    <p class="cards-more" hidden><button type="button" class="button quiet">Show more</button></p>
-  </div>
+  </div></div>
 </section>
-<script src="{{ base }}/assets/js/cards.js" defer></script>
 {% endblock %}

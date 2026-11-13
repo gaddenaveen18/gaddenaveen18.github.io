@@ -1,7 +1,7 @@
 {
   "title": "Naveen Gadde",
   "author": "Naveen Gadde",
-  "tagline": "Notes on leadership, reliability and the questions that move us forward.",
+  "tagline": "Notes on leadership, reliability and the questions that move work forward.",
   "description": "Essays, frameworks, books and the \"A Thought Experiment\" series by Naveen Gadde, collected from LinkedIn in one place.",
   "url": "https://gaddenaveen18.github.io",
   "base_path": "",
@@ -11,36 +11,5 @@
   "timezone": "America/Chicago",
   "series_label": "A Thought Experiment",
   "home_post_count": 6,
-  "goatcounter": "gaddenaveen",
-  "topics": {
-    "Leadership & Mindset": "#7c3aed",
-    "AI & Data": "#0f766e",
-    "Reliability & Operations": "#1d5b8f",
-    "Security": "#c2410c"
-  },
-  "home_framework_count": 3,
-  "cards_per_page": 12,
-  "substack_url": "https://gaddenaveen.substack.com",
-  "subscribe_line": "One email when a new volume or framework is published. No spam, unsubscribe anytime.",
-  "photo": "",
-  "short_bio": "Part engineer, part poet. Learning across India, Scotland and the United States taught me that the same problem looks different depending on where you stand, so I became a collector of perspectives. I turn them into thought experiments, frameworks and short books, and share them so others can build on them.",
-  "motto": "Think Big. Act Wise. Bring Clarity.",
-  "roles": "Engineer · Poet · Collector of perspectives",
-  "tagline_accent": "the questions",
-  "perspectives": [
-    "India",
-    "Scotland",
-    "United States"
-  ],
-  "perspectives_caption": "Where perspectives meet.",
-  "hero_notes": {
-    "engineer": [
-      "builds systems",
-      "that stay up"
-    ],
-    "poet": [
-      "finds the words",
-      "for why"
-    ]
-  }
+  "goatcounter": "gaddenaveen"
 }

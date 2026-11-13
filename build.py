@@ -31,7 +31,6 @@ from zoneinfo import ZoneInfo
 
 import markdown
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from markupsafe import Markup
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "_site"
@@ -67,7 +66,7 @@ class ContentError(Exception):
 
 def parse_front_matter(text: str, path: Path) -> tuple[dict, str]:
     """Read the 'key: value' block between --- lines at the top of a file."""
-    text = text.lstrip("\ufeff")
+    text = text.lstrip("Ã¯Â»Â¿")
     if not text.startswith("---"):
         return {}, text
     parts = text.split("\n---", 1)
@@ -98,7 +97,7 @@ def plain_excerpt(body_html: str, limit: int = 220) -> str:
     if len(text) <= limit:
         return text
     cut = text[:limit].rsplit(" ", 1)[0]
-    return cut.rstrip(",.;:") + "\u2026"
+    return cut.rstrip(",.;:") + "Ã¢â‚¬Â¦"
 
 
 def slugify(text: str) -> str:
@@ -187,7 +186,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     site_url = (f"https://{cfg['custom_domain']}" if cfg.get("custom_domain") else cfg.get("url", "")).rstrip("/") + base
 
     posts = sorted(load_folder(ROOT / "posts", "post", today), key=lambda p: (p.date, p.slug), reverse=True)
-    frameworks = sort_newest(load_folder(ROOT / "frameworks", "framework", today, now))
+    frameworks = load_folder(ROOT / "frameworks", "framework", today, now)
     books = sorted(load_folder(ROOT / "books", "book", today), key=lambda b: int(b.meta.get("volume", "0") or 0))
     audiobook_catalog = json.loads((ROOT / "audiobooks.json").read_text(encoding="utf-8"))
     pages = load_folder(ROOT / "pages", "page")
@@ -207,21 +206,10 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     for b in books:
         b.meta["key_ideas"] = [k.strip() for k in b.meta.get("key_ideas", "").split("|") if k.strip()]
 
-    topic_colors = cfg.get("topics", {})
-    for i, f in enumerate(frameworks):
-        f.meta["next"] = frameworks[(i + 1) % len(frameworks)] if len(frameworks) > 1 else None
-        shape_framework(f)
-    fw_topics = [t for t in topic_colors if any(f.meta.get("topic") == t for f in frameworks)]
-    fw_topics += sorted({f.meta["topic"] for f in frameworks if f.meta.get("topic")} - set(fw_topics))
-    make_thumbs = thumbs_available()
-    for i in posts + frameworks:
-        if i.meta.get("image"):
-            i.meta["thumb"] = ("thumbs/" + i.meta["image"]) if make_thumbs else i.meta["image"]
-
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html", "xml"]),
                       trim_blocks=True, lstrip_blocks=True)
     env.filters["date"] = format_date
-    env.globals.update(cos=math.cos, sin=math.sin, topic_colors=topic_colors)
+    env.globals.update(cos=math.cos, sin=math.sin)
     env.globals.update(site=cfg, base=base, site_url=site_url, series_label=series_label,
                        nav_frameworks=frameworks, nav_books=bool(books), nav_audiobooks=bool(audiobook_catalog.get("series")), year=datetime.now().year)
 
@@ -235,14 +223,12 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
         target.write_text(env.get_template(template).render(path=rel, **ctx), encoding="utf-8")
 
     write("/", "home.html", posts=posts[: cfg.get("home_post_count", 6)], all_count=len(posts),
-          latest_series=series_posts[0] if series_posts else None, frameworks=frameworks, books=books,
-          latest_frameworks=frameworks[: cfg.get("home_framework_count", 3)])
+          latest_series=series_posts[0] if series_posts else None, frameworks=frameworks, books=books)
     write("/posts/", "archive.html", posts=posts, years=_group_by_year(posts))
     for p in posts:
         write(p.url, "post.html", item=p)
     if frameworks:
-        write("/frameworks/", "frameworks.html", frameworks=frameworks, topics=fw_topics,
-              page_size=cfg.get("cards_per_page", 12))
+        write("/frameworks/", "frameworks.html", frameworks=frameworks)
     for f in frameworks:
         write(f.url, "framework.html", item=f)
     if books:
@@ -253,10 +239,6 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
         write(b.url, "book.html", item=b)
     for pg in pages:
         write(pg.url, "page.html", item=pg)
-    write("/search/", "search.html")
-    index = [{"kind": kind, "title": i.title, "url": base + i.url, "topic": i.meta.get("topic", ""), "summary": i.excerpt}
-             for kind, group in (("Framework", frameworks), ("Book", books), ("Post", posts)) for i in group]
-    (out / "search.json").write_text(json.dumps(index, ensure_ascii=False), encoding="utf-8")
     write("404.html", "404.html")
     write("feed.xml", "feed.xml", posts=posts[:30],
           updated=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
@@ -266,8 +248,6 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     if cfg.get("custom_domain"):
         (out / "CNAME").write_text(cfg["custom_domain"].strip() + "\n", encoding="utf-8")
     shutil.copytree(ROOT / "static", out / "assets")
-    if make_thumbs:
-        write_thumbs([i.meta["image"] for i in posts + frameworks if i.meta.get("image")], out / "assets" / "thumbs")
     scheduled = sorted(p.name[:10] for p in (ROOT / "posts").glob("[0-9]*.md") if p.name[:10] > today.isoformat())
     missing = [i.meta["image"] for i in posts + frameworks
                if i.meta.get("image") and not (ROOT / "static" / i.meta["image"]).is_file()]
@@ -278,62 +258,6 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
             if b.meta.get(key) and not (ROOT / "static" / b.meta[key]).is_file():
                 raise ContentError(f"books: '{key}' file not found in static/: {b.meta[key]}")
     return {"posts": len(posts), "frameworks": len(frameworks), "books": len(books), "pages": len(pages), "scheduled": scheduled}
-
-
-def sort_newest(items):
-    """Newest first. Items that share a date follow their 'order:' number (1 first), then title."""
-    def key(i):
-        try:
-            order = int(i.meta.get("order") or 999)
-        except ValueError:
-            raise ContentError(f"{i.slug}: order must be a whole number like 3")
-        return (-(i.date or date.min).toordinal(), order, i.title.lower())
-    return sorted(items, key=key)
-
-
-def shape_framework(f):
-    """Lift the opening tagline, drop the in-text copy of the hero image, and box the
-    key principle and team questions, so every framework page gets the same layout."""
-    body = f.body_html
-    m = re.match(r"\s*<p><strong>(.+?)</strong></p>\s*", body, re.S)
-    if m:
-        f.meta["tagline"] = Markup(m.group(1))
-        body = body[m.end():]
-    if f.meta.get("image"):
-        img = re.escape(f.meta["image"])
-        body = re.sub(r"<p>\s*<a href=\"[^\"]*" + img + r"\">\s*<img[^>]*>\s*</a>\s*</p>\s*", "", body)
-    body = re.sub(r"<h2>The key principle</h2>\s*(.+?)(?=<h2>|$)",
-                  r'<aside class="key-box"><p class="key-label">The key principle</p>\1</aside>', body, flags=re.S)
-    def team(m):
-        inner = m.group(1).replace("<ul>", "<ol>").replace("</ul>", "</ol>")
-        return f'<section class="try-box"><h2>Try it with your team</h2>{inner}</section>'
-    body = re.sub(r"<h2>Try it with your team</h2>(.+?)(?=<h2>|$)", team, body, flags=re.S)
-    f.body_html = body
-
-
-def thumbs_available() -> bool:
-    try:
-        import PIL  # noqa: F401
-        return True
-    except ImportError:
-        return False
-
-
-def write_thumbs(images, out: Path, width: int = 760) -> None:
-    """Small copies of each picture for cards, so list pages stay fast as they grow."""
-    from PIL import Image
-    for rel in set(images):
-        src, dst = ROOT / "static" / rel, out / rel
-        if not src.is_file():
-            continue  # reported as a missing image below
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        with Image.open(src) as im:
-            if im.width > width:
-                im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
-            if dst.suffix.lower() in (".jpg", ".jpeg"):
-                im.convert("RGB").save(dst, "JPEG", quality=82, optimize=True)
-            else:
-                im.save(dst)
 
 
 def _group_by_year(posts):

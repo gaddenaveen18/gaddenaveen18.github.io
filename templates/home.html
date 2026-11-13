@@ -1,59 +1,18 @@
 {% extends "base.html" %}
-{% from "_macros.html" import post_row, question_loop, card, subscribe_box %}
+{% from "_macros.html" import post_row, question_loop %}
 {% block content %}
-{% set loop_fw = [] if site.get('photo') else frameworks|selectattr('meta.diagram', 'equalto', 'question-loop')|list %}
-<section class="intro{% if site.get('photo') %} intro-hero{% endif %}">
-  <div class="wrap intro-grid{% if not loop_fw and not site.get('photo') %} solo{% endif %}">
+{% set loop_fw = frameworks|selectattr('meta.diagram', 'equalto', 'question-loop')|list %}
+<section class="intro">
+  <div class="wrap intro-grid{% if not loop_fw %} solo{% endif %}">
     <div>
-      {% if site.get('photo') and site.get('roles') %}<p class="intro-kicker">{{ site.roles }}</p>{% endif %}
-      {% set accent = site.get('tagline_accent', '') %}
-      <p class="intro-lede">{% if site.get('photo') and accent and accent in site.tagline %}{{ site.tagline.split(accent)[0] }}<em class="lede-accent">{{ accent }}</em>{{ site.tagline.split(accent, 1)[1] }}{% else %}{{ site.tagline }}{% endif %}</p>
-      {% if site.get('photo') and site.get('short_bio') %}
-      <p class="intro-body">{{ site.short_bio }}</p>
-      {% else %}
+      <p class="intro-lede">{{ site.tagline }}</p>
       <p class="intro-body">I write <em>{{ series_label }}</em>, a series I publish from time to time: one idea about leadership, engineering or work, examined from a different angle. This site keeps every post, framework and book in one place.</p>
-      {% endif %}
       <p class="intro-links">
-        <a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>
-        {% if site.get('substack_url') %}<a class="button quiet" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe</a>{% endif %}
+        <a class="button" href="{{ base }}/posts/">Read the writing</a>
+        {% if 'YOUR-' not in site.linkedin_url %}<a class="button quiet" href="{{ site.linkedin_url }}" rel="me noopener">Follow on LinkedIn</a>{% endif %}
       </p>
     </div>
-    {% if site.get('photo') %}
-    {% set pv = site.get('perspectives', []) %}
-    {% set notes = site.get('hero_notes', {}) %}
-    <a class="perspectives" href="{{ base }}/about/" aria-label="About {{ site.author }}">
-      <svg viewBox="0 0 600 560" role="img" aria-label="Photo of {{ site.author }} where three circles meet{% if pv %}: {{ pv|join(', ') }}{% endif %}">
-        <defs>
-          <linearGradient id="tint-in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF9933"/><stop offset="1" stop-color="#138808"/></linearGradient>
-          <linearGradient id="tint-sc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0065BD"/><stop offset="1" stop-color="#0065BD"/></linearGradient>
-          <linearGradient id="tint-us" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B22234"/><stop offset="1" stop-color="#3C3B6E"/></linearGradient>
-          <clipPath id="hero-photo"><circle cx="300" cy="262" r="96"/></clipPath></defs>
-        {% if pv|length == 3 %}
-        <circle class="pv pv1" cx="300" cy="170" r="140"/>
-        <circle class="pv pv2" cx="212" cy="320" r="140"/>
-        <circle class="pv pv3" cx="388" cy="320" r="140"/>
-        <text class="pv-label pv1" x="300" y="16" text-anchor="middle">{{ pv[0]|upper }}</text>
-        <text class="pv-label pv2" x="120" y="480" text-anchor="middle">{{ pv[1]|upper }}</text>
-        <text class="pv-label pv3" x="480" y="480" text-anchor="middle">{{ pv[2]|upper }}</text>
-        {% endif %}
-        {% if notes.get('engineer') %}
-        <path class="note-line eng" d="M152 150 C 186 156, 204 172, 224 200"/>
-        <text class="note-code" x="10" y="92">// engineer</text>
-        {% for l in notes.engineer %}<text class="note-code dim" x="10" y="{{ 116 + loop.index0 * 22 }}">{{ l }}</text>{% endfor %}
-        {% endif %}
-        {% if notes.get('poet') %}
-        <path class="note-line poet" d="M448 150 C 414 156, 396 172, 376 200"/>
-        <text class="note-poet" x="590" y="92" text-anchor="end">poet</text>
-        {% for l in notes.poet %}<text class="note-poet dim" x="590" y="{{ 116 + loop.index0 * 23 }}" text-anchor="end">{{ l }}</text>{% endfor %}
-        {% endif %}
-        <image href="{{ base }}/assets/{{ site.photo }}" x="204" y="166" width="192" height="192" clip-path="url(#hero-photo)" preserveAspectRatio="xMidYMid slice"/>
-        <circle class="photo-ring" cx="300" cy="262" r="96"/>
-        {% if site.get('perspectives_caption') %}<text class="pv-caption" x="300" y="540" text-anchor="middle">{{ site.perspectives_caption }}</text>{% endif %}
-      </svg>
-      <span class="persp-name">{{ site.author }}</span>
-      {% if site.get('motto') %}<span class="persp-motto">{{ site.motto }}</span>{% endif %}
-    </a>
-    {% elif loop_fw %}
+    {% if loop_fw %}
     <a class="intro-figure" href="{{ base }}{{ loop_fw[0].url }}" aria-label="Open {{ loop_fw[0].title }}">
       {{ question_loop(loop_fw[0].meta.stages.split(',')|map('trim')|list, label=loop_fw[0].title) }}
       <span class="figure-caption">{{ loop_fw[0].title }}, a framework from the series</span>
@@ -92,22 +51,6 @@
 </section>
 {% endif %}
 
-{% if latest_frameworks %}
-<section class="frameworks">
-  <div class="wrap">
-    <h2 class="section-title">Latest frameworks</h2>
-    <ul class="cards cards-strip">
-      {% for f in latest_frameworks %}{{ card(f) }}{% endfor %}
-    </ul>
-    {% if frameworks|length > latest_frameworks|length %}<p class="more"><a href="{{ base }}/frameworks/">All {{ frameworks|length }} frameworks</a></p>{% endif %}
-  </div>
-</section>
-{% endif %}
-
-<section class="home-subscribe">
-  <div class="wrap">{{ subscribe_box() }}</div>
-</section>
-
 <section class="recent">
   <div class="wrap"><div class="col">
     <h2 class="section-title">Recent writing</h2>
@@ -122,5 +65,16 @@
   </div></div>
 </section>
 
-
+{% if frameworks %}
+<section class="frameworks">
+  <div class="wrap"><div class="col">
+    <h2 class="section-title">Frameworks</h2>
+    <ul class="fw-list">
+      {% for f in frameworks %}
+      <li><a href="{{ base }}{{ f.url }}"><span class="fw-title">{{ f.title }}</span><span class="fw-summary">{{ f.excerpt }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div></div>
+</section>
+{% endif %}
 {% endblock %}
