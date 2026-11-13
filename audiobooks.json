@@ -1,5 +1,12 @@
 {
-  "languages": ["English", "Spanish", "German", "French", "Portuguese", "Hindi"],
+  "languages": [
+    "English",
+    "Spanish",
+    "German",
+    "French",
+    "Portuguese",
+    "Hindi"
+  ],
   "series": [
     {
       "name": "Thought Experiments for the Superintelligence Era",
@@ -7,21 +14,38 @@
         {
           "volume": 1,
           "title": "Perfect Knowledge vs. Imperfect Brilliance",
-          "languages": {
-            "English": "https://open.spotify.com/show/6z2Ng25rOR1MgMdM781FQ5",
-            "Spanish": "https://open.spotify.com/show/5VNDhDHPaUxsklXM2p32aL",
-            "German": "https://open.spotify.com/show/0nxZXdO6gYSVvjowYJWrUC",
-            "French": "https://open.spotify.com/show/4XBQAiZLi0Ioja4LlmIK8P",
-            "Portuguese": "https://open.spotify.com/show/4Qbd1hMUw7DixG1TxSSAA6",
-            "Hindi": "https://open.spotify.com/show/4ZiHJjfrZ8xtLCjVqvLtWn"
-          }
+          "languages": {}
         },
-        {"volume": 2, "title": "Right Questions vs. Right Answers", "languages": {}},
-        {"volume": 3, "title": "Winning Over Winners", "languages": {}},
-        {"volume": 4, "title": "Volume 4", "languages": {}},
-        {"volume": 5, "title": "Volume 5", "languages": {}},
-        {"volume": 6, "title": "Volume 6", "languages": {}},
-        {"volume": 7, "title": "Volume 7", "languages": {}}
+        {
+          "volume": 2,
+          "title": "Right Questions vs. Right Answers",
+          "languages": {}
+        },
+        {
+          "volume": 3,
+          "title": "Winning Over Winners",
+          "languages": {}
+        },
+        {
+          "volume": 4,
+          "title": "Volume 4",
+          "languages": {}
+        },
+        {
+          "volume": 5,
+          "title": "Volume 5",
+          "languages": {}
+        },
+        {
+          "volume": 6,
+          "title": "Volume 6",
+          "languages": {}
+        },
+        {
+          "volume": 7,
+          "title": "Volume 7",
+          "languages": {}
+        }
       ]
     }
   ]
