@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% set title = heading %}
-{% set description = heading ~ " by " ~ site.author ~ ": coming soon." %}
+{% set description = "Thought Experiments for the Superintelligence Era by " ~ site.author ~ ". " ~ heading ~ " coming soon." %}
+{% set og_image = "coming-soon-card.jpg" %}
+{% set og_image_alt = "Thought Experiments for the Superintelligence Era, a series by " ~ site.author ~ ": coming soon" %}
 {% block content %}
 <section class="page-head coming-soon-page">
   <div class="wrap">
