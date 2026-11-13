@@ -11,5 +11,7 @@
   "timezone": "America/Chicago",
   "series_label": "A Thought Experiment",
   "home_post_count": 6,
-  "goatcounter": "gaddenaveen"
+  "goatcounter": "gaddenaveen",
+  "books_coming_soon": "Short, interactive books from the series are on the way.",
+  "audiobooks_coming_soon": "Audio editions of the books are on the way."
 }

@@ -230,3 +230,6 @@ h1 { font-size: clamp(2.1rem, 5vw, 3rem); font-variation-settings: "opsz" 60; }
 .spotify-link { white-space: nowrap; font-weight: 700; }
 .coming-soon { white-space: nowrap; font-size: .9rem; }
 .audio-note { margin-top: 1rem; color: var(--muted, #6b7280); font-size: .9rem; }
+/* coming-soon pages */
+.coming-soon-page { padding-bottom: 4rem; }
+.coming-soon-badge { display: inline-block; font: 600 .85rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: .55rem .9rem; border-radius: 999px; margin: .5rem 0 1rem; }

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% set title = heading %}
+{% set description = heading ~ " by " ~ site.author ~ ": coming soon." %}
+{% block content %}
+<section class="page-head coming-soon-page">
+  <div class="wrap">
+    <h1>{{ heading }}</h1>
+    <p class="coming-soon-badge">Coming soon</p>
+    {% if note and note is string %}<p class="page-sub">{{ note }}</p>{% endif %}
+    <p class="more"><a href="{{ base }}/">Back to the home page</a></p>
+  </div>
+</section>
+{% endblock %}
