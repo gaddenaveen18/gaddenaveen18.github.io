@@ -36,7 +36,7 @@ def test_builds_with_no_posts(site):
     counts = build.build(copy / "_site")
     assert counts == {"posts": 0, "frameworks": 9, "books": 0, "pages": 1, "scheduled": []}
     home = (copy / "_site" / "index.html").read_text()
-    assert "No posts yet." in home and "The Question Loop" in home
+    assert "No posts yet." in home and "Latest frameworks" in home
     for f in ["about/index.html", "posts/index.html", "frameworks/the-question-loop/index.html",
               "404.html", "feed.xml", "sitemap.xml", "robots.txt", ".nojekyll", "assets/css/site.css"]:
         assert (copy / "_site" / f).exists(), f
