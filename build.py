@@ -190,6 +190,8 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     frameworks = sort_newest(load_folder(ROOT / "frameworks", "framework", today, now))
     books = sorted(load_folder(ROOT / "books", "book", today), key=lambda b: int(b.meta.get("volume", "0") or 0))
     audiobook_catalog = json.loads((ROOT / "audiobooks.json").read_text(encoding="utf-8"))
+    if audiobook_catalog.get("hidden"):
+        audiobook_catalog = {}  # page held: set "hidden": false in audiobooks.json to show it again
     pages = load_folder(ROOT / "pages", "page")
     series_label = cfg.get("series_label", "")
     series_posts = [p for p in posts if p.meta.get("series") == "thought-experiment"]
@@ -266,6 +268,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     if cfg.get("custom_domain"):
         (out / "CNAME").write_text(cfg["custom_domain"].strip() + "\n", encoding="utf-8")
     shutil.copytree(ROOT / "static", out / "assets")
+    remove_unpublished_files(out / "assets", posts + frameworks + books)
     if make_thumbs:
         write_thumbs([i.meta["image"] for i in posts + frameworks if i.meta.get("image")], out / "assets" / "thumbs")
     scheduled = sorted(p.name[:10] for p in (ROOT / "posts").glob("[0-9]*.md") if p.name[:10] > today.isoformat())
@@ -334,6 +337,22 @@ def write_thumbs(images, out: Path, width: int = 760) -> None:
                 im.convert("RGB").save(dst, "JPEG", quality=82, optimize=True)
             else:
                 im.save(dst)
+
+
+ASSET_KEYS = ("image", "cover", "pdf", "audio")
+
+
+def remove_unpublished_files(assets: Path, published) -> None:
+    """Files that belong only to held, draft or not-yet-scheduled items stay out of the
+    published site, so nobody can reach them by direct link before they launch."""
+    keep = {i.meta[k] for i in published for k in ASSET_KEYS if i.meta.get(k)}
+    for folder in ("posts", "frameworks", "books"):
+        for path in (ROOT / folder).glob("*.md"):
+            meta, _ = parse_front_matter(path.read_text(encoding="utf-8"), path)
+            for k in ASSET_KEYS:
+                rel = meta.get(k)
+                if rel and rel not in keep:
+                    (assets / rel).unlink(missing_ok=True)
 
 
 def _group_by_year(posts):
