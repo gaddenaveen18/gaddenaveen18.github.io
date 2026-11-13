@@ -5,7 +5,7 @@
 <section class="page-head">
   <div class="wrap">
     <h1>Search</h1>
-    <p class="page-sub">Every post, framework and book in one place.</p>
+    <p class="page-sub">Every post{% if nav_frameworks %}, framework{% endif %}{% if nav_books %} and book{% endif %} in one place.</p>
     <form class="filter search-form" role="search" action="{{ base }}/search/">
       <label for="sq">Search for a word or idea</label>
       <input id="sq" name="q" type="search" placeholder="Try “data”, “questions” or “security”" autocomplete="off">
@@ -16,7 +16,7 @@
 <section class="cards-section">
   <div class="wrap">
     <ol class="search-results" id="search-results"></ol>
-    <noscript><p class="empty">Search needs JavaScript. You can browse <a href="{{ base }}/posts/">writing</a>, <a href="{{ base }}/frameworks/">frameworks</a> and <a href="{{ base }}/books/">books</a> instead.</p></noscript>
+    <noscript><p class="empty">Search needs JavaScript. You can browse <a href="{{ base }}/posts/">writing</a>, <a href="{{ base }}/frameworks/">frameworks</a>{% if nav_books %} and <a href="{{ base }}/books/">books</a>{% endif %} instead.</p></noscript>
   </div>
 </section>
 <script>window.SEARCH_INDEX = "{{ base }}/search.json";</script>
