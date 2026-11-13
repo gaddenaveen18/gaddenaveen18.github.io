@@ -151,7 +151,8 @@ def test_real_posts_build_with_images(site):
     assert early["posts"] == 0 and early["frameworks"] == 0  # everything scheduled
     assert len(early["scheduled"]) == 6
     late = build.build(out, today=date(2026, 11, 20))
-    assert late == {**late, "posts": 3, "frameworks": 9}
+    held = sum(1 for p in (copy / "posts").glob("2026-11-1*.md") if "\ndraft: true" in p.read_text() and p.name[:10] <= "2026-11-20")
+    assert late == {**late, "posts": 3 - held, "frameworks": 9}  # posts marked draft: true stay on hold
     page = (out / "posts" / "winning-over-winners" / "index.html").read_text()
     assert 'property="og:image"' in page and "winning-over-winners.jpg" in page and 'alt="Infographic' in page
     fw = (out / "frameworks" / "the-question-loop" / "index.html").read_text()

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Human Intelligence × Superintelligence
 series: thought-experiment
 tags: AI, Superintelligence, ProblemSolving, Leadership, DecisionMaking, FutureOfWork

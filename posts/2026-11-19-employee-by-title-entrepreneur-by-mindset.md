@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Employee by Title. Entrepreneur by Mindset.
 series: thought-experiment
 tags: Leadership, EntrepreneurialMindset, FutureOfWork, Ownership, ContinuousLearning

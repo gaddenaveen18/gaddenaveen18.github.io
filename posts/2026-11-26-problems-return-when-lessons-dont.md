@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Problems Return When Lessons Don't
 series: thought-experiment
 tags: ProblemSolving, Leadership, SRE, SystemsThinking, ContinuousImprovement, Reliability
