@@ -357,3 +357,10 @@ h1 { font-size: clamp(2.1rem, 5vw, 3rem); font-variation-settings: "opsz" 60; }
   .note-line.poet { stroke: #c4b5fd; }
 }
 @media (max-width: 820px) { .intro-hero .intro-grid { grid-template-columns: minmax(0, 1fr); } .perspectives svg { max-width: 21rem; } }
+
+circle.pv1 { fill: url(#tint-in); fill-opacity: .14; stroke: #d98a3a; stroke-opacity: .6; }
+circle.pv2 { fill: url(#tint-sc); fill-opacity: .11; stroke: #0065BD; stroke-opacity: .45; }
+circle.pv3 { fill: url(#tint-us); fill-opacity: .12; stroke: #8a3a5a; stroke-opacity: .45; }
+.pv-label.pv1 { fill: #b5651d; } .pv-label.pv2 { fill: #0065BD; } .pv-label.pv3 { fill: #9b2335; }
+@media (prefers-color-scheme: dark) { circle.pv1 { fill-opacity: .2; } circle.pv2 { fill-opacity: .2; } circle.pv3 { fill-opacity: .22; }
+  .pv-label.pv1 { fill: #f5b26b; } .pv-label.pv2 { fill: #6fb1ff; } .pv-label.pv3 { fill: #f08a9a; } }

@@ -23,7 +23,11 @@
     {% set notes = site.get('hero_notes', {}) %}
     <a class="perspectives" href="{{ base }}/about/" aria-label="About {{ site.author }}">
       <svg viewBox="0 0 600 560" role="img" aria-label="Photo of {{ site.author }} where three circles meet{% if pv %}: {{ pv|join(', ') }}{% endif %}">
-        <defs><clipPath id="hero-photo"><circle cx="300" cy="262" r="96"/></clipPath></defs>
+        <defs>
+          <linearGradient id="tint-in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF9933"/><stop offset="1" stop-color="#138808"/></linearGradient>
+          <linearGradient id="tint-sc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0065BD"/><stop offset="1" stop-color="#0065BD"/></linearGradient>
+          <linearGradient id="tint-us" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B22234"/><stop offset="1" stop-color="#3C3B6E"/></linearGradient>
+          <clipPath id="hero-photo"><circle cx="300" cy="262" r="96"/></clipPath></defs>
         {% if pv|length == 3 %}
         <circle class="pv pv1" cx="300" cy="170" r="140"/>
         <circle class="pv pv2" cx="212" cy="320" r="140"/>
