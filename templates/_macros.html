@@ -82,10 +82,10 @@
 <aside class="subscribe">
   <div class="subscribe-text">
     <p class="subscribe-title">{{ heading }}</p>
-    <p class="subscribe-sub">{{ site.get('subscribe_line', 'One email when something new is published. Free, no spam, unsubscribe anytime.') }}</p>
+    <p class="subscribe-sub">{{ site.get('subscribe_line', 'One email when something new is published. No spam, unsubscribe anytime.') }}</p>
   </div>
   <p class="subscribe-actions">
-    <a class="button" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe free</a>
+    <a class="button" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe</a>
     {% if 'YOUR-' not in site.linkedin_url %}<a class="button quiet" href="{{ site.linkedin_url }}" rel="me noopener">Follow on LinkedIn</a>{% endif %}
   </p>
 </aside>
