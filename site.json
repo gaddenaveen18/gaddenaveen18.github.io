@@ -26,6 +26,21 @@
   "short_bio": "Part engineer, part poet. Learning across India, Scotland and the United States taught me that the same problem looks different depending on where you stand, so I became a collector of perspectives. I turn them into thought experiments, frameworks and short books, and share them so others can build on them.",
   "motto": "Think Big. Act Wise. Bring Clarity.",
   "roles": "Engineer · Poet · Collector of perspectives",
-  "photo_tag": "Naveen Gadde",
-  "tagline_accent": "the questions"
+  "tagline_accent": "the questions",
+  "perspectives": [
+    "India",
+    "Scotland",
+    "United States"
+  ],
+  "perspectives_caption": "Where perspectives meet.",
+  "hero_notes": {
+    "engineer": [
+      "builds systems",
+      "that stay up"
+    ],
+    "poet": [
+      "finds the words",
+      "for why"
+    ]
+  }
 }

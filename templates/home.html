@@ -17,13 +17,37 @@
         <a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>
         {% if site.get('substack_url') %}<a class="button quiet" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe</a>{% endif %}
       </p>
-      {% if site.get('photo') and site.get('motto') %}<p class="intro-motto">{{ site.motto }}</p>{% endif %}
     </div>
     {% if site.get('photo') %}
-    <a class="photo-frame" href="{{ base }}/about/" aria-label="About {{ site.author }}">
-      <span class="photo-plate" aria-hidden="true"></span>
-      <img src="{{ base }}/assets/{{ site.photo }}" alt="Photo of {{ site.author }}" width="640" height="720">
-      {% if site.get('photo_tag') %}<span class="photo-tag">{{ site.photo_tag }}</span>{% endif %}
+    {% set pv = site.get('perspectives', []) %}
+    {% set notes = site.get('hero_notes', {}) %}
+    <a class="perspectives" href="{{ base }}/about/" aria-label="About {{ site.author }}">
+      <svg viewBox="0 0 600 560" role="img" aria-label="Photo of {{ site.author }} where three circles meet{% if pv %}: {{ pv|join(', ') }}{% endif %}">
+        <defs><clipPath id="hero-photo"><circle cx="300" cy="262" r="96"/></clipPath></defs>
+        {% if pv|length == 3 %}
+        <circle class="pv pv1" cx="300" cy="170" r="140"/>
+        <circle class="pv pv2" cx="212" cy="320" r="140"/>
+        <circle class="pv pv3" cx="388" cy="320" r="140"/>
+        <text class="pv-label pv1" x="300" y="58" text-anchor="middle">{{ pv[0]|upper }}</text>
+        <text class="pv-label pv2" x="120" y="480" text-anchor="middle">{{ pv[1]|upper }}</text>
+        <text class="pv-label pv3" x="480" y="480" text-anchor="middle">{{ pv[2]|upper }}</text>
+        {% endif %}
+        {% if notes.get('engineer') %}
+        <path class="note-line eng" d="M152 150 C 186 156, 204 172, 224 200"/>
+        <text class="note-code" x="10" y="92">// engineer</text>
+        {% for l in notes.engineer %}<text class="note-code dim" x="10" y="{{ 116 + loop.index0 * 22 }}">{{ l }}</text>{% endfor %}
+        {% endif %}
+        {% if notes.get('poet') %}
+        <path class="note-line poet" d="M448 150 C 414 156, 396 172, 376 200"/>
+        <text class="note-poet" x="590" y="92" text-anchor="end">poet</text>
+        {% for l in notes.poet %}<text class="note-poet dim" x="590" y="{{ 116 + loop.index0 * 23 }}" text-anchor="end">{{ l }}</text>{% endfor %}
+        {% endif %}
+        <image href="{{ base }}/assets/{{ site.photo }}" x="204" y="166" width="192" height="192" clip-path="url(#hero-photo)" preserveAspectRatio="xMidYMid slice"/>
+        <circle class="photo-ring" cx="300" cy="262" r="96"/>
+        {% if site.get('perspectives_caption') %}<text class="pv-caption" x="300" y="540" text-anchor="middle">{{ site.perspectives_caption }}</text>{% endif %}
+      </svg>
+      <span class="persp-name">{{ site.author }}</span>
+      {% if site.get('motto') %}<span class="persp-motto">{{ site.motto }}</span>{% endif %}
     </a>
     {% elif loop_fw %}
     <a class="intro-figure" href="{{ base }}{{ loop_fw[0].url }}" aria-label="Open {{ loop_fw[0].title }}">
