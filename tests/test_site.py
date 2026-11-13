@@ -34,7 +34,7 @@ def test_builds_with_no_posts(site):
     for f in (copy / "frameworks").glob("*.md"):
         f.write_text(re.sub(r"(date|publish_at): .*\n", "", f.read_text()))
     counts = build.build(copy / "_site")
-    assert counts == {"posts": 0, "frameworks": 3, "books": 0, "pages": 1, "scheduled": []}
+    assert counts == {"posts": 0, "frameworks": 4, "books": 0, "pages": 1, "scheduled": []}
     home = (copy / "_site" / "index.html").read_text()
     assert "No posts yet." in home and "The Question Loop" in home
     for f in ["about/index.html", "posts/index.html", "frameworks/the-question-loop/index.html",
@@ -151,7 +151,7 @@ def test_real_posts_build_with_images(site):
     assert early["posts"] == 0 and early["frameworks"] == 0  # everything scheduled
     assert len(early["scheduled"]) == 6
     late = build.build(out, today=date(2026, 11, 20))
-    assert late == {**late, "posts": 3, "frameworks": 3}
+    assert late == {**late, "posts": 3, "frameworks": 4}
     page = (out / "posts" / "winning-over-winners" / "index.html").read_text()
     assert 'property="og:image"' in page and "winning-over-winners.jpg" in page and 'alt="Infographic' in page
     fw = (out / "frameworks" / "the-question-loop" / "index.html").read_text()
