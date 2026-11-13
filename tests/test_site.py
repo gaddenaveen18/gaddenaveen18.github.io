@@ -176,6 +176,8 @@ def test_books_appear_on_their_release_date(site):
     from datetime import date
     copy, build, _ = site
     out = copy / "_site"
+    for b in (copy / "books").glob("*.md"):  # test the release schedule itself, ignoring any hold
+        b.write_text(b.read_text().replace("\ndraft: true", ""))
     assert build.build(out, today=date(2026, 11, 4))["books"] == 0  # nothing before launch day
     early = build.build(out, today=date(2026, 11, 5))
     assert early["books"] == 1  # Vol. 1 launches first
@@ -184,11 +186,11 @@ def test_books_appear_on_their_release_date(site):
     assert "Download the free PDF" in page and "Key ideas in one minute" in page
     assert 'href="/books/"' in (out / "index.html").read_text()  # nav + home strip
     assert not (out / "books" / "growth-through-giving").exists()
+    assert not (out / "assets" / "books" / "vol7-growth-through-giving.pdf").exists()  # unreleased files stay private
     late = build.build(out, today=date(2027, 3, 1))
-    held = sum(1 for b in (copy / "books").glob("*.md") if "\ndraft: true" in b.read_text())
-    assert late["books"] == 7 - held  # volumes marked draft: true stay on hold
+    assert late["books"] == 7
     books = (out / "books" / "index.html").read_text()
-    assert books.index("Vol. 1") < books.index("Vol. 2")
+    assert books.index("Vol. 1") < books.index("Vol. 7")
     rq = (out / "books" / "right-questions-vs-right-answers" / "index.html").read_text()
     assert 'href="/posts/right-questions-vs-right-answers/"' in rq  # links to its post
     for b in (copy / "books").glob("*.md"):
@@ -207,6 +209,8 @@ def test_post_links_to_its_book_once_released(site):
     from datetime import date
     copy, build, _ = site
     out = copy / "_site"
+    for b in (copy / "books").glob("*.md"):  # test the release schedule itself, ignoring any hold
+        b.write_text(b.read_text().replace("\ndraft: true", ""))
     build.build(out, today=date(2026, 11, 12))
     post = (out / "posts" / "winning-over-winners" / "index.html").read_text()
     assert "Go deeper" not in post  # Vol. 3 not released until Monday
@@ -216,3 +220,14 @@ def test_post_links_to_its_book_once_released(site):
     build.build(out, today=date(2026, 11, 9))
     post = (out / "posts" / "right-questions-vs-right-answers" / "index.html").read_text()
     assert 'href="/books/right-questions-vs-right-answers/"' in post and "Go deeper" in post
+
+
+def test_held_items_are_not_downloadable(site):
+    copy, build, _ = site
+    out = copy / "_site"
+    b = copy / "books" / "vol1-perfect-knowledge-vs-imperfect-brilliance.md"
+    if "\ndraft: true" not in b.read_text():
+        b.write_text(b.read_text().replace("---\n", "---\ndraft: true\n", 1))
+    build.build(out)
+    assert not (out / "books" / "perfect-knowledge-vs-imperfect-brilliance").exists()
+    assert not (out / "assets" / "books" / "vol1-perfect-knowledge-vs-imperfect-brilliance.pdf").exists()
