@@ -35,7 +35,7 @@
         <a href="{{ base }}/posts/" {% if path.startswith('/posts') %}aria-current="page"{% endif %}>Writing</a>
         {% if nav_books %}<a href="{{ base }}/books/" {% if path.startswith('/books') %}aria-current="page"{% endif %}>Books</a>{% endif %}
         {% if nav_audiobooks %}<a href="{{ base }}/audiobooks/" {% if path.startswith('/audiobooks') %}aria-current="page"{% endif %}>Audiobooks</a>{% endif %}
-        {% if nav_frameworks %}<a href="{{ base }}{{ nav_frameworks[0].url }}" {% if path.startswith('/frameworks') %}aria-current="page"{% endif %}>Frameworks</a>{% endif %}
+        {% if nav_frameworks %}<a href="{{ base }}/frameworks/" {% if path.startswith('/frameworks') %}aria-current="page"{% endif %}>Frameworks</a>{% endif %}
         <a href="{{ base }}/about/" {% if path.startswith('/about') %}aria-current="page"{% endif %}>About</a>
         {% if 'YOUR-' not in site.linkedin_url %}<a href="{{ site.linkedin_url }}" rel="me noopener">LinkedIn</a>{% endif %}
       </nav>

@@ -211,6 +211,8 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     write("/posts/", "archive.html", posts=posts, years=_group_by_year(posts))
     for p in posts:
         write(p.url, "post.html", item=p)
+    if frameworks:
+        write("/frameworks/", "frameworks.html", frameworks=frameworks)
     for f in frameworks:
         write(f.url, "framework.html", item=f)
     if books:
@@ -224,7 +226,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     write("404.html", "404.html")
     write("feed.xml", "feed.xml", posts=posts[:30],
           updated=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/books/"] if books else []) + (["/audiobooks/"] if audiobook_catalog.get("series") else []) + [i.url for i in posts + frameworks + books + pages])
+    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/frameworks/"] if frameworks else []) + (["/books/"] if books else []) + (["/audiobooks/"] if audiobook_catalog.get("series") else []) + [i.url for i in posts + frameworks + books + pages])
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n", encoding="utf-8")
     (out / ".nojekyll").write_text("", encoding="utf-8")
     if cfg.get("custom_domain"):

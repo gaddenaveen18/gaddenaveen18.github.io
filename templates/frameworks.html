@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% set title = "Frameworks" %}
+{% set description = "Frameworks by Naveen Gadde: simple models for leadership, reliability and work, each introduced in a post." %}
+{% block content %}
+<section class="page-head">
+  <div class="wrap">
+    <h1>Frameworks</h1>
+    <p class="page-sub">Simple models for leadership, reliability and work, each one introduced in a post.</p>
+  </div>
+</section>
+<section class="frameworks">
+  <div class="wrap"><div class="col">
+    <ul class="fw-list">
+      {% for f in frameworks %}
+      <li><a href="{{ base }}{{ f.url }}"><span class="fw-title">{{ f.title }}</span><span class="fw-summary">{{ f.excerpt }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div></div>
+</section>
+{% endblock %}
