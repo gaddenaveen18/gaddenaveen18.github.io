@@ -2,6 +2,7 @@
 title: Human Intelligence × Superintelligence
 slug: human-intelligence-x-superintelligence
 volume: 6
+draft: true
 date: 2026-12-07
 summary: Five years later, who has solved more important problems?
 opening: Imagine two people facing the same problem. One has access to every AI tool. The other has only experience and curiosity. Five years later, who has solved more important problems?

@@ -179,9 +179,10 @@ def test_books_appear_on_their_release_date(site):
     assert 'href="/books/"' in (out / "index.html").read_text()  # nav + home strip
     assert not (out / "books" / "growth-through-giving").exists()
     late = build.build(out, today=date(2027, 3, 1))
-    assert late["books"] == 7
+    held = sum(1 for b in (copy / "books").glob("*.md") if "\ndraft: true" in b.read_text())
+    assert late["books"] == 7 - held  # volumes marked draft: true stay on hold
     books = (out / "books" / "index.html").read_text()
-    assert books.index("Vol. 1") < books.index("Vol. 7")
+    assert books.index("Vol. 1") < books.index("Vol. 2")
     rq = (out / "books" / "right-questions-vs-right-answers" / "index.html").read_text()
     assert 'href="/posts/right-questions-vs-right-answers/"' in rq  # links to its post
     for b in (copy / "books").glob("*.md"):

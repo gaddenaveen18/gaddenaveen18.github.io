@@ -2,6 +2,7 @@
 title: Problems Return When Lessons Don't
 slug: problems-return-when-lessons-dont
 volume: 5
+draft: true
 date: 2026-11-30
 summary: Why do good solutions keep bringing back the same problems?
 opening: Imagine you fix a problem perfectly. Six months later, it is back. Why do good solutions keep bringing back the same problems?
