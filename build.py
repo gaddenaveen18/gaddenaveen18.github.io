@@ -225,7 +225,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     env.filters["date"] = format_date
     env.globals.update(cos=math.cos, sin=math.sin, topic_colors=topic_colors)
     env.globals.update(site=cfg, base=base, site_url=site_url, series_label=series_label,
-                       nav_frameworks=frameworks, nav_books=bool(books), nav_audiobooks=bool(audiobook_catalog.get("series")), year=datetime.now().year)
+                       nav_frameworks=frameworks, nav_books=bool(books) or bool(cfg.get("books_coming_soon")), nav_audiobooks=bool(audiobook_catalog.get("series")) or bool(cfg.get("audiobooks_coming_soon")), year=datetime.now().year)
 
     if out.exists():
         shutil.rmtree(out)
@@ -249,8 +249,12 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
         write(f.url, "framework.html", item=f)
     if books:
         write("/books/", "books.html", books=books)
+    elif cfg.get("books_coming_soon"):
+        write("/books/", "coming_soon.html", heading="Books", note=cfg["books_coming_soon"])
     if audiobook_catalog.get("series"):
         write("/audiobooks/", "audiobooks.html", audiobook_catalog=audiobook_catalog)
+    elif cfg.get("audiobooks_coming_soon"):
+        write("/audiobooks/", "coming_soon.html", heading="Audiobooks", note=cfg["audiobooks_coming_soon"])
     for b in books:
         write(b.url, "book.html", item=b)
     for pg in pages:
@@ -262,7 +266,7 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     write("404.html", "404.html")
     write("feed.xml", "feed.xml", posts=posts[:30],
           updated=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/frameworks/"] if frameworks else []) + (["/books/"] if books else []) + (["/audiobooks/"] if audiobook_catalog.get("series") else []) + [i.url for i in posts + frameworks + books + pages])
+    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/frameworks/"] if frameworks else []) + (["/books/"] if books or cfg.get("books_coming_soon") else []) + (["/audiobooks/"] if audiobook_catalog.get("series") or cfg.get("audiobooks_coming_soon") else []) + [i.url for i in posts + frameworks + books + pages])
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n", encoding="utf-8")
     (out / ".nojekyll").write_text("", encoding="utf-8")
     if cfg.get("custom_domain"):

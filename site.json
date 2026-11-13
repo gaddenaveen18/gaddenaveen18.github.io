@@ -42,5 +42,7 @@
       "finds the words",
       "for why"
     ]
-  }
+  },
+  "books_coming_soon": "Short, interactive books from the series are on the way.",
+  "audiobooks_coming_soon": "Audio editions of the books are on the way."
 }
