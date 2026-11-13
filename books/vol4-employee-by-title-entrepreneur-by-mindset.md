@@ -2,6 +2,7 @@
 title: Employee by Title. Entrepreneur by Mindset.
 slug: employee-by-title-entrepreneur-by-mindset
 volume: 4
+draft: true
 date: 2026-11-23
 summary: If not the role, what makes the difference?
 opening: Imagine two people with the same title, the same desk, and the same job description. One keeps things running. The other moves things forward. If not the role, what makes the difference?

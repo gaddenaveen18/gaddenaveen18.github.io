@@ -2,6 +2,7 @@
 title: Growth Through Giving
 slug: growth-through-giving
 volume: 7
+draft: true
 date: 2026-12-14
 summary: Who gave, and who grew?
 opening: Imagine you teach someone everything you know. Years later, they are teaching you. Who gave, and who grew?
