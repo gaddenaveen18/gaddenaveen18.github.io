@@ -2,23 +2,28 @@
 {% from "_macros.html" import post_row, question_loop, card, subscribe_box %}
 {% block content %}
 {% set loop_fw = [] if site.get('photo') else frameworks|selectattr('meta.diagram', 'equalto', 'question-loop')|list %}
-<section class="intro">
+<section class="intro{% if site.get('photo') %} intro-hero{% endif %}">
   <div class="wrap intro-grid{% if not loop_fw and not site.get('photo') %} solo{% endif %}">
     <div>
-      <p class="intro-lede">{{ site.tagline }}</p>
+      {% if site.get('photo') and site.get('roles') %}<p class="intro-kicker">{{ site.roles }}</p>{% endif %}
+      {% set accent = site.get('tagline_accent', '') %}
+      <p class="intro-lede">{% if site.get('photo') and accent and accent in site.tagline %}{{ site.tagline.split(accent)[0] }}<em class="lede-accent">{{ accent }}</em>{{ site.tagline.split(accent, 1)[1] }}{% else %}{{ site.tagline }}{% endif %}</p>
+      {% if site.get('photo') and site.get('short_bio') %}
+      <p class="intro-body">{{ site.short_bio }}</p>
+      {% else %}
       <p class="intro-body">I write <em>{{ series_label }}</em>, a series I publish from time to time: one idea about leadership, engineering or work, examined from a different angle. This site keeps every post, framework and book in one place.</p>
+      {% endif %}
       <p class="intro-links">
         <a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>
         {% if site.get('substack_url') %}<a class="button quiet" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe free</a>{% endif %}
       </p>
+      {% if site.get('photo') and site.get('motto') %}<p class="intro-motto">{{ site.motto }}</p>{% endif %}
     </div>
     {% if site.get('photo') %}
-    <a class="intro-person" href="{{ base }}/about/">
-      <img src="{{ base }}/assets/{{ site.photo }}" alt="Photo of {{ site.author }}" width="320" height="320">
-      <span class="intro-person-text">
-        <span class="intro-person-bio">{{ site.get('short_bio', '') }}</span>
-        {% if site.get('motto') %}<span class="intro-person-motto">{{ site.motto }}</span>{% endif %}
-      </span>
+    <a class="photo-frame" href="{{ base }}/about/" aria-label="About {{ site.author }}">
+      <span class="photo-plate" aria-hidden="true"></span>
+      <img src="{{ base }}/assets/{{ site.photo }}" alt="Photo of {{ site.author }}" width="640" height="720">
+      {% if site.get('photo_tag') %}<span class="photo-tag">{{ site.photo_tag }}</span>{% endif %}
     </a>
     {% elif loop_fw %}
     <a class="intro-figure" href="{{ base }}{{ loop_fw[0].url }}" aria-label="Open {{ loop_fw[0].title }}">
