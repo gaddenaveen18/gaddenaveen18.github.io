@@ -110,7 +110,7 @@ def slugify(text: str) -> str:
 FILENAME_DATE = re.compile(r"^(\d{4}-\d{2}-\d{2})-(.+)$")
 
 
-def load_folder(folder: Path, kind: str, today: date | None = None) -> list[Item]:
+def load_folder(folder: Path, kind: str, today: date | None = None, now: datetime | None = None) -> list[Item]:
     """Read every .md file in a folder. Posts dated after `today` stay hidden
     until their day comes (scheduled posts)."""
     items = []
@@ -137,6 +137,13 @@ def load_folder(folder: Path, kind: str, today: date | None = None) -> list[Item
             raise ContentError(f"{path.name}: posts need a date, either in the file name (2026-11-03-title.md) or as 'date:'")
         if today and item_date and kind in ("post", "framework", "book") and item_date > today:
             continue  # scheduled for later
+        if now and meta.get("publish_at"):
+            try:
+                publish_at = datetime.fromisoformat(meta["publish_at"].strip())
+            except ValueError:
+                raise ContentError(f"{path.name}: publish_at must look like 2026-11-13 21:00")
+            if now.replace(tzinfo=None) < publish_at:
+                continue  # scheduled for a later time today (your time zone)
         title = meta.get("title") or stem.replace("-", " ").capitalize()
         body_html = render_markdown(body)
         tags = [t.strip().lstrip("#") for t in meta.get("tags", "").split(",") if t.strip()]
@@ -163,14 +170,23 @@ def site_today(cfg: dict) -> date:
         return datetime.now(timezone.utc).date()
 
 
+def site_now(cfg: dict) -> datetime:
+    """The current time in your time zone, for items with a publish_at time."""
+    try:
+        return datetime.now(ZoneInfo(cfg.get("timezone") or "UTC"))
+    except Exception:
+        return datetime.now(timezone.utc)
+
+
 def build(out: Path = OUT, today: date | None = None) -> dict:
     cfg = json.loads((ROOT / "site.json").read_text(encoding="utf-8"))
-    today = today or site_today(cfg)
+    now = None if today else site_now(cfg)
+    today = today or now.date()
     base = cfg.get("base_path", "").rstrip("/")
     site_url = (f"https://{cfg['custom_domain']}" if cfg.get("custom_domain") else cfg.get("url", "")).rstrip("/") + base
 
     posts = sorted(load_folder(ROOT / "posts", "post", today), key=lambda p: (p.date, p.slug), reverse=True)
-    frameworks = load_folder(ROOT / "frameworks", "framework", today)
+    frameworks = load_folder(ROOT / "frameworks", "framework", today, now)
     books = sorted(load_folder(ROOT / "books", "book", today), key=lambda b: int(b.meta.get("volume", "0") or 0))
     audiobook_catalog = json.loads((ROOT / "audiobooks.json").read_text(encoding="utf-8"))
     pages = load_folder(ROOT / "pages", "page")

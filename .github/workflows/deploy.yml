@@ -9,6 +9,8 @@ on:
   # Rebuild every morning (about 5am Central in winter, 6am in summer) so scheduled posts and books appear before 7am
   schedule:
     - cron: "7 11 * * *"
+  # Rebuild every evening (about 9pm Central in winter, 10pm in summer) for items with a publish_at time
+    - cron: "1 3 * * *"
 
 permissions:
   contents: read
