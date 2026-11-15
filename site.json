@@ -23,7 +23,7 @@
   "substack_url": "https://gaddenaveen.substack.com",
   "subscribe_line": "One email when a new volume or framework is published. No spam, unsubscribe anytime.",
   "photo": "",
-  "short_bio": "Part engineer, part poet. Learning across India, Scotland and the United States taught me that the same problem looks different depending on where you stand, so I became a collector of perspectives. I turn them into thought experiments, frameworks and short books, and share them so others can build on them.",
+  "short_bio": "Part engineer, part poet. I collect perspectives from three countries and turn them into short books that read like conversations, not lectures. Every one ends with a poem, and leaves the last page for you.",
   "motto": "Think Big. Act Wise. Bring Clarity.",
   "roles": "Engineer · Poet · Collector of perspectives",
   "tagline_accent": "the questions",
@@ -44,5 +44,15 @@
     ]
   },
   "books_coming_soon": "Short, interactive books from the series are on the way.",
-  "audiobooks_coming_soon": "Audio editions of the books are on the way."
+  "audiobooks_coming_soon": "Audio editions of the books are on the way.",
+  "about_bio": [
+    "Learning across India, Scotland and the United States taught me that the same problem looks different depending on where you stand. So I collect perspectives, and turn them into short books.",
+    "They aren’t lectures. Each one is a ten-minute conversation: I share what I’ve noticed, ask you a question, and leave space on the page for your answer. And every book ends with a poem, because some ideas only land when they’re felt."
+  ],
+  "about_poem": [
+    "The engineer in me builds the question.",
+    "The poet in me leaves it open.",
+    "Every book is half-written,",
+    "until you write the rest."
+  ]
 }
