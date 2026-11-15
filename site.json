@@ -54,5 +54,29 @@
     "The poet in me leaves it open.",
     "Every book is half-written,",
     "until you write the rest."
+  ],
+  "offerings": [
+    {
+      "title": "Thought Experiments",
+      "text": "Short posts, each one question explored from a new angle.",
+      "url": "/posts/"
+    },
+    {
+      "title": "Frameworks",
+      "text": "Simple models for leadership, AI and reliability, each with a picture.",
+      "url": "/frameworks/"
+    },
+    {
+      "title": "Books",
+      "text": "Ten-minute conversational books you write in as you read.",
+      "url": "/books/",
+      "soon_key": "books_coming_soon"
+    },
+    {
+      "title": "Audio editions",
+      "text": "The same books, narrated.",
+      "url": "/audiobooks/",
+      "soon_key": "audiobooks_coming_soon"
+    }
   ]
 }

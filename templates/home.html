@@ -62,6 +62,20 @@
   </div>
 </section>
 
+{% if site.get('offerings') %}
+<section class="offerings">
+  <div class="wrap">
+    <h2 class="section-title">What you’ll find here</h2>
+    <ul class="offer-grid">
+      {% for o in site.offerings %}
+      {% set soon = o.get('soon_key') and site.get(o.soon_key) and not (o.url == '/books/' and books) %}
+      <li><a href="{{ base }}{{ o.url }}"><span class="offer-title">{{ o.title }}{% if soon %} <span class="offer-soon">Coming soon</span>{% endif %}</span><span class="offer-text">{{ o.text }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
 {% if latest_series %}
 <section class="feature">
   <div class="wrap">
