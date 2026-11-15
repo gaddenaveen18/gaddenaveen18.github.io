@@ -1,4 +1,6 @@
 ---
+draft: true
+window: 1
 title: Recursive Structures for Smarter Models
 topic: AI & Data
 order: 6

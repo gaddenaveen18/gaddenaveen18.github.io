@@ -1,4 +1,5 @@
 ---
+window: 8
 draft: true
 title: "Abundant Intelligence, Scarce Entrepreneurship"
 topic: Entrepreneurship

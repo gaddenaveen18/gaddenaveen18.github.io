@@ -1,4 +1,6 @@
 ---
+draft: true
+window: 4
 title: "Right Strategy, Right Time, Right Edge: Data Strategy in the AI Era"
 topic: AI & Data
 order: 3

@@ -1,4 +1,5 @@
 ---
+window: 1
 title: Perfect Knowledge vs. Imperfect Brilliance
 slug: perfect-knowledge-vs-imperfect-brilliance
 volume: 1

@@ -1,4 +1,5 @@
 ---
+window: 9
 draft: true
 title: "The Explorer's Curiosity, the Entrepreneur's Creation"
 topic: Entrepreneurship

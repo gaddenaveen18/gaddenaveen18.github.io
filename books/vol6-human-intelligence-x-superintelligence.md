@@ -1,4 +1,5 @@
 ---
+window: 6
 title: Human Intelligence × Superintelligence
 slug: human-intelligence-x-superintelligence
 volume: 6

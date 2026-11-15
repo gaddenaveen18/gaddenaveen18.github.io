@@ -1,4 +1,6 @@
 ---
+draft: true
+window: 5
 title: The 7-Layer Autonomous Observability Architecture
 topic: Reliability & Operations
 order: 7

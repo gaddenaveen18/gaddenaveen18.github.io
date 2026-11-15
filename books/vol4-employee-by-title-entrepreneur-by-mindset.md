@@ -1,4 +1,5 @@
 ---
+window: 4
 title: Employee by Title. Entrepreneur by Mindset.
 slug: employee-by-title-entrepreneur-by-mindset
 volume: 4

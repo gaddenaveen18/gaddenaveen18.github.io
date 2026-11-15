@@ -1,4 +1,5 @@
 ---
+window: 11
 draft: true
 title: "The Maker's Love, the Market's Choice"
 topic: Entrepreneurship

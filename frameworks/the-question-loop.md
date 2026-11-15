@@ -1,4 +1,6 @@
 ---
+draft: true
+window: 2
 title: The Question Loop
 topic: Leadership & Mindset
 date: 2026-11-05

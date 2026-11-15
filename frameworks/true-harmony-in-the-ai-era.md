@@ -1,4 +1,6 @@
 ---
+draft: true
+window: 1
 title: "True Harmony in the AI Era: Intellect + Intelligence"
 topic: Leadership & Mindset
 order: 1

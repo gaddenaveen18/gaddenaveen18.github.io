@@ -1,4 +1,5 @@
 ---
+window: 2
 title: Right Questions vs. Right Answers
 slug: right-questions-vs-right-answers
 volume: 2

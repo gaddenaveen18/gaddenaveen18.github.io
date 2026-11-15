@@ -1,4 +1,6 @@
 ---
+draft: true
+window: 6
 title: "Token Optimization: Leave Logic to AI, Keep Common Sense Human"
 topic: AI & Data
 order: 4

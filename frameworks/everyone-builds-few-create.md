@@ -1,4 +1,5 @@
 ---
+window: 10
 draft: true
 title: "Everyone Builds, Few Create"
 topic: Entrepreneurship

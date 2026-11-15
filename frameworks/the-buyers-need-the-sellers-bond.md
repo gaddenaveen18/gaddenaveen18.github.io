@@ -1,4 +1,5 @@
 ---
+window: 12
 draft: true
 title: "The Buyer's Need, the Seller's Bond"
 topic: Entrepreneurship
