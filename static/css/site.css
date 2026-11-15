@@ -379,3 +379,6 @@ circle.pv3 { fill: url(#tint-us); fill-opacity: .12; stroke: #8a3a5a; stroke-opa
 .offer-title { font: 600 1.05rem/1.3 var(--sans); }
 .offer-text { color: var(--muted); font-size: .98rem; line-height: 1.45; }
 .offer-soon { display: block; width: max-content; margin: .4rem 0 0; font: 600 .66rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: .3rem .45rem; border-radius: 999px; vertical-align: middle; }
+
+.about-motto { font: 600 1.05rem/1.3 var(--sans); letter-spacing: .02em; color: var(--ink); margin: 0 0 1.6em 1.25rem; }
+.about-head:has(.about-photo) { align-items: center; }

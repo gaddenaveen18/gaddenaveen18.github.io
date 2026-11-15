@@ -9,13 +9,14 @@
     {% if is_about and site.get('photo') %}<img class="about-photo" src="{{ base }}/assets/{{ site.photo }}" alt="Photo of {{ site.author }}" width="320" height="320">{% endif %}
     <div>
       <h1>{{ item.title }}</h1>
-      {% if is_about and site.get('motto') %}<p class="fw-tagline">{{ site.motto }}</p>{% endif %}
+      {% if is_about and site.get('motto') and not site.get('about_poem') %}<p class="fw-tagline">{{ site.motto }}</p>{% endif %}
     </div>
   </header>
   <div class="wrap narrow prose">
     {% if is_about and site.get('about_bio') %}
       {% for para in site.about_bio %}<p class="about-lede">{{ para }}</p>{% endfor %}
       {% if site.get('about_poem') %}<p class="about-poem">{% for line in site.about_poem %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>{% endif %}
+      {% if site.get('motto') %}<p class="about-motto">{{ site.motto }}</p>{% endif %}
       <hr>
     {% elif is_about and site.get('short_bio') %}<p class="about-lede">{{ site.short_bio }}</p>{% endif %}
     {{ item.body_html|safe }}
