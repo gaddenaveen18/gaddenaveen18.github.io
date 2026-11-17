@@ -45,7 +45,7 @@
     ]
   },
   "books_coming_soon": "Short, interactive books from the series are on the way.",
-  "audiobooks_coming_soon": "Audio editions of the books are on the way.",
+  "audiobooks_coming_soon": "Audio editions of the books are on the way: the same conversations, narrated, so you can listen on a walk, a drive or a commute. English first, with more languages to follow.",
   "frameworks_coming_soon": "Frameworks from the books are on the way, each released alongside its book.",
   "about_bio": [
     "Learning across India, Scotland and the United States taught me that the same problem looks different depending on where you stand. So I collect perspectives, and turn them into short books.",
@@ -80,7 +80,7 @@
     },
     {
       "title": "Audio editions",
-      "text": "The same books, narrated.",
+      "text": "The same books, narrated, for a walk, a drive or a commute. English first, with more languages to follow.",
       "url": "/audiobooks/",
       "soon_key": "audiobooks_coming_soon",
       "role": "To listen"
