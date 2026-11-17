@@ -387,3 +387,8 @@ circle.pv3 { fill: url(#tint-us); fill-opacity: .12; stroke: #8a3a5a; stroke-opa
 .offer-role { font: 600 .68rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 
 .pv-note { font: italic 16px var(--serif); fill: var(--muted); }
+
+.start-here { margin: 1rem 0 0; font: italic 1.02rem/1.5 var(--serif); color: var(--muted); }
+.start-here a { color: var(--accent); font-style: normal; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+.start-here a:hover { border-bottom-color: var(--accent); }
+.start-here span { color: var(--accent); }
