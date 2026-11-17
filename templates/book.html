@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_macros.html" import share_bar, subscribe_box %}
 {% set title = item.title %}
 {% set description = item.excerpt %}
 {% set og_type = "book" %}
@@ -38,6 +39,8 @@
   </div>
   <footer class="wrap narrow article-foot">
     <p class="book-license">Free to read and share. Please keep my name with it, and do not sell or alter it. Views are my own and do not represent any current or past employer.</p>
+    {{ share_bar(item) }}
+    {{ subscribe_box("Get the next volume in your inbox") }}
     <p class="more"><a href="{{ base }}/books/">All books in the series</a></p>
   </footer>
 </article>

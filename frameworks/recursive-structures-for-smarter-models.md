@@ -1,8 +1,9 @@
 ---
-draft: true
+window: 1
 title: Recursive Structures for Smarter Models
-date: 2026-11-13
-publish_at: 2026-11-13 21:00
+topic: AI & Data
+order: 6
+date: 2026-11-16
 source_post: Mathematics is proportional to Predictive Analytics — AI within Method (Recursive Structures for Smarter Models)
 summary: Mathematics gives predictive analytics its discipline. Using the Fibonacci sequence as a lens, this framework shows how growth that builds on what came before makes AI models easier to predict, test and trust. Not magic, just method.
 image: posts/recursive-structures-for-smarter-models.jpg

@@ -1,4 +1,5 @@
 ---
+window: 5
 title: Problems Return When Lessons Don't
 slug: problems-return-when-lessons-dont
 volume: 5

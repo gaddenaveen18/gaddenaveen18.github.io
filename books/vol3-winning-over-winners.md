@@ -1,4 +1,5 @@
 ---
+window: 3
 title: Winning Over Winners
 slug: winning-over-winners
 volume: 3

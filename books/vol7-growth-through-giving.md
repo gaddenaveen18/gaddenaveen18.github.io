@@ -1,4 +1,5 @@
 ---
+window: 7
 title: Growth Through Giving
 slug: growth-through-giving
 volume: 7

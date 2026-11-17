@@ -32,16 +32,34 @@ def _live_frameworks(copy):
     """Frameworks not marked draft: true (drafts are on hold)."""
     return sum(1 for f in (copy / "frameworks").glob("*.md") if "\ndraft: true" not in f.read_text())
 
+def _release_frameworks(copy):
+    """Take frameworks off hold in the test copy, to check how they build and link."""
+    for f in (copy / "frameworks").glob("*.md"):
+        f.write_text(f.read_text().replace("\ndraft: true\n", "\n"))
+
+
+def _frameworks_live_by(copy, day):
+    """Frameworks not on hold whose release date has arrived."""
+    import re as _re
+    n = 0
+    for f in (copy / "frameworks").glob("*.md"):
+        t = f.read_text()
+        m = _re.search(r"^date: (\S+)", t, _re.M)
+        n += "\ndraft: true" not in t and (not m or m.group(1) <= day)
+    return n
+
+
 def test_builds_with_no_posts(site):
     copy, build, _ = site
     for f in list((copy / "posts").glob("2026-*.md")) + list((copy / "books").glob("*.md")):
         f.unlink()  # start from an empty site
+    _release_frameworks(copy)
     for f in (copy / "frameworks").glob("*.md"):
         f.write_text(re.sub(r"(date|publish_at): .*\n", "", f.read_text()))
     counts = build.build(copy / "_site")
     assert counts == {"posts": 0, "frameworks": _live_frameworks(copy), "books": 0, "pages": 1, "scheduled": []}
     home = (copy / "_site" / "index.html").read_text()
-    assert "No posts yet." in home and "The Question Loop" in home
+    assert "No posts yet." in home and "Latest frameworks" in home
     for f in ["about/index.html", "posts/index.html", "frameworks/the-question-loop/index.html",
               "404.html", "feed.xml", "sitemap.xml", "robots.txt", ".nojekyll", "assets/css/site.css"]:
         assert (copy / "_site" / f).exists(), f
@@ -151,13 +169,14 @@ def test_importer_handles_inline_title_and_fancy_bold(site):
 def test_real_posts_build_with_images(site):
     from datetime import date
     copy, build, _ = site
+    _release_frameworks(copy)
     out = copy / "_site"
     early = build.build(out, today=date(2026, 11, 1))
     assert early["posts"] == 0 and early["frameworks"] == 0  # everything scheduled
     assert len(early["scheduled"]) == 6
     late = build.build(out, today=date(2026, 11, 20))
     held = sum(1 for p in (copy / "posts").glob("2026-11-1*.md") if "\ndraft: true" in p.read_text() and p.name[:10] <= "2026-11-20")
-    assert late == {**late, "posts": 3 - held, "frameworks": _live_frameworks(copy)}  # posts marked draft: true stay on hold
+    assert late == {**late, "posts": 3 - held, "frameworks": _frameworks_live_by(copy, "2026-11-20")}  # posts marked draft: true stay on hold
     page = (out / "posts" / "winning-over-winners" / "index.html").read_text()
     assert 'property="og:image"' in page and "winning-over-winners.jpg" in page and 'alt="Infographic' in page
     fw = (out / "frameworks" / "the-question-loop" / "index.html").read_text()

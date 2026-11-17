@@ -1,7 +1,7 @@
 {
   "title": "Naveen Gadde",
   "author": "Naveen Gadde",
-  "tagline": "Notes on leadership, reliability and the questions that move work forward.",
+  "tagline": "Notes on leadership, reliability and the questions that move us forward.",
   "description": "Essays, frameworks, books and the \"A Thought Experiment\" series by Naveen Gadde, collected from LinkedIn in one place.",
   "url": "https://gaddenaveen18.github.io",
   "base_path": "",
@@ -12,6 +12,74 @@
   "series_label": "A Thought Experiment",
   "home_post_count": 6,
   "goatcounter": "gaddenaveen",
+  "topics": {
+    "Leadership & Mindset": "#7c3aed",
+    "AI & Data": "#0f766e",
+    "Reliability & Operations": "#1d5b8f",
+    "Security": "#c2410c",
+    "Entrepreneurship": "#be185d"
+  },
+  "home_framework_count": 3,
+  "cards_per_page": 12,
+  "substack_url": "https://gaddenaveen.substack.com",
+  "subscribe_line": "One email when a new volume or framework is published. No spam, unsubscribe anytime.",
+  "photo": "people/naveen-gadde.jpg",
+  "short_bio": "Part engineer, part poet. I collect perspectives from three countries and turn them into short books that read like conversations, not lectures. Every one ends with a poem, and leaves the last page for you.",
+  "motto": "Think Big. Act Wise. Bring Clarity.",
+  "roles": "Engineer · Poet · Collector of perspectives",
+  "tagline_accent": "the questions",
+  "perspectives": [
+    "India",
+    "Scotland",
+    "United States"
+  ],
+  "perspectives_caption": "Where perspectives meet.",
+  "hero_notes": {
+    "engineer": [
+      "builds systems",
+      "that stay up"
+    ],
+    "poet": [
+      "finds the words",
+      "for why"
+    ]
+  },
   "books_coming_soon": "Short, interactive books from the series are on the way.",
-  "audiobooks_coming_soon": "Audio editions of the books are on the way."
+  "audiobooks_coming_soon": "Audio editions of the books are on the way.",
+  "frameworks_coming_soon": "Frameworks from the books are on the way, each released alongside its book.",
+  "about_bio": [
+    "Learning across India, Scotland and the United States taught me that the same problem looks different depending on where you stand. So I collect perspectives, and turn them into short books.",
+    "They aren’t lectures. Each one is a ten-minute conversation: I share what I’ve noticed, ask you a question, and leave space on the page for your answer. And every book ends with a poem, because some ideas only land when they’re felt."
+  ],
+  "about_poem": [
+    "The engineer in me builds the question.",
+    "The poet in me leaves it open.",
+    "Every book is half-written,",
+    "until you write the rest."
+  ],
+  "offerings": [
+    {
+      "title": "Thought Experiments",
+      "text": "Short posts, each one question explored from a new angle.",
+      "url": "/posts/"
+    },
+    {
+      "title": "Frameworks",
+      "text": "Simple models for leadership, AI and reliability, each with a picture.",
+      "url": "/frameworks/",
+      "soon_key": "frameworks_coming_soon"
+    },
+    {
+      "title": "Books",
+      "text": "Ten-minute conversational books you write in as you read.",
+      "url": "/books/",
+      "soon_key": "books_coming_soon"
+    },
+    {
+      "title": "Audio editions",
+      "text": "The same books, narrated.",
+      "url": "/audiobooks/",
+      "soon_key": "audiobooks_coming_soon"
+    }
+  ]
 }

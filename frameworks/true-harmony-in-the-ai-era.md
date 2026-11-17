@@ -1,8 +1,9 @@
 ---
-draft: true
+window: 1
 title: "True Harmony in the AI Era: Intellect + Intelligence"
-date: 2026-11-13
-publish_at: 2026-11-13 21:00
+topic: Leadership & Mindset
+order: 1
+date: 2026-11-16
 source_post: True Harmony - In AI Era
 summary: Two forces, one extraordinary mind. Intellect is what we cultivate, intelligence is how we adapt, and AI can help the two work in balance. Mastery emerges when they align.
 image: posts/true-harmony-in-the-ai-era.jpg

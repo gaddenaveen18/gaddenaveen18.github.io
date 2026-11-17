@@ -1,8 +1,9 @@
 ---
-draft: true
+window: 3
 title: "True Efficiency in the AI Era: Augmentation vs Substitution"
-date: 2026-11-13
-publish_at: 2026-11-13 21:00
+topic: Leadership & Mindset
+order: 2
+date: 2026-11-16
 source_post: True Efficiency in the AI Era (AI-Augmentation vs AI-Substitution)
 summary: Efficiency in the AI era comes from auditing outputs, enhancing human ingenuity and guiding AI with high-quality examples. Augmentation compounds into growth; substitution erodes into decline.
 image: posts/true-efficiency-in-the-ai-era.jpg
