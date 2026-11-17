@@ -32,9 +32,15 @@
         <circle class="pv pv1" cx="300" cy="170" r="140"/>
         <circle class="pv pv2" cx="212" cy="320" r="140"/>
         <circle class="pv pv3" cx="388" cy="320" r="140"/>
-        <text class="pv-label pv1" x="300" y="16" text-anchor="middle">{{ pv[0]|upper }}</text>
+        {% set pn = site.get('perspective_notes', []) %}
+        <text class="pv-label pv1" x="300" y="{{ -6 if pn else 16 }}" text-anchor="middle">{{ pv[0]|upper }}</text>
         <text class="pv-label pv2" x="120" y="480" text-anchor="middle">{{ pv[1]|upper }}</text>
         <text class="pv-label pv3" x="480" y="480" text-anchor="middle">{{ pv[2]|upper }}</text>
+        {% if pn|length == 3 %}
+        <text class="pv-note" x="300" y="15" text-anchor="middle">{{ pn[0] }}</text>
+        <text class="pv-note" x="120" y="502" text-anchor="middle">{{ pn[1] }}</text>
+        <text class="pv-note" x="480" y="502" text-anchor="middle">{{ pn[2] }}</text>
+        {% endif %}
         {% endif %}
         {% if notes.get('engineer') %}
         <path class="note-line eng" d="M152 150 C 186 156, 204 172, 224 200"/>
@@ -48,7 +54,7 @@
         {% endif %}
         <image href="{{ base }}/assets/{{ site.photo }}" x="204" y="166" width="192" height="192" clip-path="url(#hero-photo)" preserveAspectRatio="xMidYMid slice"/>
         <circle class="photo-ring" cx="300" cy="262" r="96"/>
-        {% if site.get('perspectives_caption') %}<text class="pv-caption" x="300" y="540" text-anchor="middle">{{ site.perspectives_caption }}</text>{% endif %}
+        {% if site.get('perspectives_caption') %}<text class="pv-caption" x="300" y="{{ 548 if site.get('perspective_notes') else 540 }}" text-anchor="middle">{{ site.perspectives_caption }}</text>{% endif %}
       </svg>
       <span class="persp-name">{{ site.author }}</span>
       {% if site.get('motto') %}<span class="persp-motto">{{ site.motto }}</span>{% endif %}
