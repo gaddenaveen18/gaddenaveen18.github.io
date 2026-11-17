@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_macros.html" import subscribe_box %}
 {% set title = heading %}
 {% set description = "Thought Experiments for the Superintelligence Era by " ~ site.author ~ ". " ~ heading ~ " coming soon." %}
 {% set og_image = "coming-soon-card.jpg" %}
@@ -11,5 +12,8 @@
     {% if note and note is string %}<p class="page-sub">{{ note }}</p>{% endif %}
     <p class="more"><a href="{{ base }}/">Back to the home page</a></p>
   </div>
+</section>
+<section class="home-subscribe">
+  <div class="wrap">{{ subscribe_box() }}</div>
 </section>
 {% endblock %}

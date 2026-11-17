@@ -15,7 +15,6 @@
       {% endif %}
       <p class="intro-links">
         {% if frameworks %}<a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>{% else %}<a class="button" href="{{ base }}/posts/">Read the Thought Experiments</a>{% endif %}
-        {% if site.get('substack_url') %}<a class="button quiet" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe</a>{% endif %}
       </p>
       {% set sh = site.get('start_here') %}{% if sh %}<p class="start-here">{{ sh.text }} <a href="{{ base }}{{ sh.url }}">{{ sh.title }}</a> <span aria-hidden="true">→</span></p>{% endif %}
     </div>
@@ -23,7 +22,7 @@
     {% set pv = site.get('perspectives', []) %}
     {% set notes = site.get('hero_notes', {}) %}
     <a class="perspectives" href="{{ base }}/about/" aria-label="About {{ site.author }}">
-      <svg viewBox="0 0 600 560" role="img" aria-label="Photo of {{ site.author }} where three circles meet{% if pv %}: {{ pv|join(', ') }}{% endif %}">
+      <svg viewBox="0 0 600 560" role="img" aria-label="Photo of {{ site.author }} where three circles meet{% if pv %}{% set pnl = site.get('perspective_notes', []) %}: {% for c in pv %}{{ c }}{% if pnl|length == pv|length %} ({{ pnl[loop.index0]|replace(' · ', ', ') }}){% endif %}{{ '; ' if not loop.last else '.' }}{% endfor %}{% endif %}">
         <defs>
           <linearGradient id="tint-in" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF9933"/><stop offset="1" stop-color="#138808"/></linearGradient>
           <linearGradient id="tint-sc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0065BD"/><stop offset="1" stop-color="#0065BD"/></linearGradient>
