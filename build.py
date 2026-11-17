@@ -268,7 +268,8 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     write("404.html", "404.html")
     write("feed.xml", "feed.xml", posts=posts[:30],
           updated=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/frameworks/"] if frameworks or cfg.get("frameworks_coming_soon") else []) + (["/books/"] if books or cfg.get("books_coming_soon") else []) + (["/audiobooks/"] if audiobook_catalog.get("series") or cfg.get("audiobooks_coming_soon") else []) + [i.url for i in posts + frameworks + books + pages])
+    write("sitemap.xml", "sitemap.xml", urls=["/", "/posts/"] + (["/frameworks/"] if frameworks or cfg.get("frameworks_coming_soon") else []) + (["/books/"] if books or cfg.get("books_coming_soon") else []) + (["/audiobooks/"] if audiobook_catalog.get("series") or cfg.get("audiobooks_coming_soon") else []) + [i.url for i in posts + frameworks + books + pages],
+          lastmod={i.url: i.date.isoformat() for i in posts + frameworks + books if i.date})
     (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {site_url}/sitemap.xml\n", encoding="utf-8")
     (out / ".nojekyll").write_text("", encoding="utf-8")
     if cfg.get("custom_domain"):

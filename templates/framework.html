@@ -4,6 +4,7 @@
 {% set description = item.excerpt %}
 {% set og_image = item.meta.get('image') %}
 {% set og_image_alt = item.meta.get('image_alt') %}
+{% set og_type = "article" %}
 {% block content %}
 {% set topic = item.meta.get('topic') %}
 <article class="article fw-page"{{ topic_style(topic) }}>
