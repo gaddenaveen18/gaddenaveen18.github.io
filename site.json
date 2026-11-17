@@ -66,7 +66,8 @@
     {
       "title": "Frameworks",
       "text": "Simple models for leadership, AI and reliability, each with a picture.",
-      "url": "/frameworks/"
+      "url": "/frameworks/",
+      "soon_key": "frameworks_coming_soon"
     },
     {
       "title": "Books",

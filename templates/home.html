@@ -14,7 +14,7 @@
       <p class="intro-body">I write <em>{{ series_label }}</em>, a series I publish from time to time: one idea about leadership, engineering or work, examined from a different angle. This site keeps every post, framework and book in one place.</p>
       {% endif %}
       <p class="intro-links">
-        <a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>
+        {% if frameworks %}<a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>{% else %}<a class="button" href="{{ base }}/posts/">Read the Thought Experiments</a>{% endif %}
         {% if site.get('substack_url') %}<a class="button quiet" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe</a>{% endif %}
       </p>
     </div>
@@ -68,7 +68,7 @@
     <h2 class="section-title">What you’ll find here</h2>
     <ul class="offer-grid">
       {% for o in site.offerings %}
-      {% set soon = o.get('soon_key') and site.get(o.soon_key) and not (o.url == '/books/' and books) %}
+      {% set soon = o.get('soon_key') and site.get(o.soon_key) and not (o.url == '/books/' and books) and not (o.url == '/frameworks/' and frameworks) %}
       <li><a href="{{ base }}{{ o.url }}"><span class="offer-title">{{ o.title }}{% if soon %} <span class="offer-soon">Coming soon</span>{% endif %}</span><span class="offer-text">{{ o.text }}</span></a></li>
       {% endfor %}
     </ul>
