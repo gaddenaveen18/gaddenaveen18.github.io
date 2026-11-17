@@ -275,6 +275,9 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
     if cfg.get("custom_domain"):
         (out / "CNAME").write_text(cfg["custom_domain"].strip() + "\n", encoding="utf-8")
     shutil.copytree(ROOT / "static", out / "assets")
+    for name in ("favicon.ico", "apple-touch-icon.png"):  # browsers and search engines look for these at the site root
+        if (ROOT / "static" / name).is_file():
+            shutil.copy2(ROOT / "static" / name, out / name)
     remove_unpublished_files(out / "assets", posts + frameworks + books)
     if make_thumbs:
         write_thumbs([i.meta["image"] for i in posts + frameworks if i.meta.get("image")], out / "assets" / "thumbs")

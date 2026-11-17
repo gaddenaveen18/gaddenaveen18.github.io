@@ -30,7 +30,9 @@
   <script type="application/ld+json">{{ {"@context": "https://schema.org", "@type": "Article", "headline": item.title, "description": page_desc, "url": site_url ~ path, "mainEntityOfPage": site_url ~ path, "image": site_url ~ "/assets/" ~ og_img, "datePublished": item.date.isoformat() if item.date else none, "author": {"@type": "Person", "name": site.author, "url": site_url ~ "/", "sameAs": same_as}, "publisher": {"@type": "Person", "name": site.author, "url": site_url ~ "/"}}|tojson }}</script>
   {% endif %}
   <meta name="color-scheme" content="light dark">
-  <link rel="icon" href="{{ base }}/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="{{ base }}/favicon.ico" sizes="48x48">
+  <link rel="icon" href="{{ base }}/assets/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="{{ base }}/apple-touch-icon.png">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ base }}/feed.xml">
   <link rel="preload" href="{{ base }}/assets/fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ base }}/assets/css/site.css">
