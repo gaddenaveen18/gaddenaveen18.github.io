@@ -59,7 +59,7 @@ def test_builds_with_no_posts(site):
     counts = build.build(copy / "_site")
     assert counts == {"posts": 0, "frameworks": _live_frameworks(copy), "books": 0, "pages": 1, "scheduled": []}
     home = (copy / "_site" / "index.html").read_text()
-    assert "No posts yet." in home and "Latest frameworks" in home
+    assert ">Latest<" in home and 'class="latest-list"' in home and "/frameworks/" in home  # the Latest list carries frameworks when there are no posts
     for f in ["about/index.html", "posts/index.html", "frameworks/the-question-loop/index.html",
               "404.html", "feed.xml", "sitemap.xml", "robots.txt", ".nojekyll", "assets/css/site.css"]:
         assert (copy / "_site" / f).exists(), f
@@ -86,7 +86,8 @@ def test_import_and_build(site):
     two = (out / "posts" / "sample-series-post-two-a-longer-title-for-wrapping" / "index.html").read_text()
     assert "<h1>" in two and "<h1>not a heading" not in two
     home = (out / "index.html").read_text()
-    assert "Sample Series Post One" in home and "latest" in home
+    assert ">Latest<" in home
+    assert "Sample Series Post One" in (out / "posts" / "index.html").read_text()
     feed = (out / "feed.xml").read_text()
     assert feed.count("<entry>") == 4
     assert "/posts/sample-from-last-year/" in (out / "sitemap.xml").read_text()

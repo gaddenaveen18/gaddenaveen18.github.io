@@ -92,22 +92,6 @@
 </section>
 {% endif %}
 
-{% if latest_series %}
-<section class="feature">
-  <div class="wrap">
-    <a class="feature-card{% if latest_series.meta.get('image') %} has-image{% endif %}" href="{{ base }}{{ latest_series.url }}">
-      <span class="feature-text">
-        <span class="series-kicker"><span aria-hidden="true">🧠</span> {{ series_label }}, latest</span>
-        <span class="feature-title">{{ latest_series.title }}</span>
-        <span class="feature-excerpt">{{ latest_series.excerpt }}</span>
-        <span class="feature-meta"><time datetime="{{ latest_series.date.isoformat() }}">{{ latest_series.date|date }}</time></span>
-      </span>
-      {% if latest_series.meta.get('image') %}<img class="feature-thumb" src="{{ base }}/assets/{{ latest_series.meta.image }}" alt="" loading="lazy">{% endif %}
-    </a>
-  </div>
-</section>
-{% endif %}
-
 {% if books %}
 <section class="books-strip">
   <div class="wrap"><div class="col">
@@ -117,20 +101,25 @@
       <li><a href="{{ base }}{{ b.url }}"><img src="{{ base }}/assets/{{ b.meta.cover }}" alt="" loading="lazy" width="300" height="375"><span class="book-row-vol">Vol. {{ b.meta.volume }}</span><span class="book-row-title">{{ b.title }}</span></a></li>
       {% endfor %}
     </ul>
-    <p class="more"><a href="{{ base }}/books/">All books, free to download</a></p>
+    <p class="more"><a href="{{ base }}/books/">All books</a></p>
   </div></div>
 </section>
 {% endif %}
 
-{% if latest_frameworks %}
-<section class="frameworks">
-  <div class="wrap">
-    <h2 class="section-title">Latest frameworks</h2>
-    <ul class="cards cards-strip">
-      {% for f in latest_frameworks %}{{ card(f) }}{% endfor %}
-    </ul>
-    {% if frameworks|length > latest_frameworks|length %}<p class="more"><a href="{{ base }}/frameworks/">All {{ frameworks|length }} frameworks</a></p>{% endif %}
-  </div>
+{% if latest_mixed %}
+<section class="latest">
+  <div class="wrap"><div class="col">
+    <h2 class="section-title">Latest</h2>
+    <ol class="latest-list">
+      {% for i in latest_mixed %}
+      <li><a href="{{ base }}{{ i.url }}">
+        <span class="latest-meta">{% if i.date %}<time datetime="{{ i.date.isoformat() }}">{{ i.date|date }}</time> · {% endif %}{% if i in frameworks %}Framework{% if i.meta.get('topic') %}, {{ i.meta.topic }}{% endif %}{% else %}Thought Experiment{% endif %}</span>
+        <span class="latest-title">{{ i.title }}</span>
+      </a></li>
+      {% endfor %}
+    </ol>
+    <p class="more"><a href="{{ base }}/posts/">All writing</a>{% if frameworks %} · <a href="{{ base }}/frameworks/">All frameworks</a>{% endif %}</p>
+  </div></div>
 </section>
 {% endif %}
 
@@ -138,19 +127,6 @@
   <div class="wrap">{{ subscribe_box() }}</div>
 </section>
 
-<section class="recent">
-  <div class="wrap"><div class="col">
-    <h2 class="section-title">Recent writing</h2>
-    {% if posts %}
-      <ol class="entries">
-        {% for p in posts if p != latest_series %}{{ post_row(p) }}{% endfor %}
-      </ol>
-      {% if all_count > posts|length %}<p class="more"><a href="{{ base }}/posts/">All {{ all_count }} posts</a></p>{% endif %}
-    {% else %}
-      <p class="empty">No posts yet.</p>
-    {% endif %}
-  </div></div>
-</section>
 
 
 {% endblock %}
