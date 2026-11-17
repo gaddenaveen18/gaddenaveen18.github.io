@@ -16,7 +16,6 @@
     {% if is_about and site.get('about_bio') %}
       {% for para in site.about_bio %}<p class="about-lede">{{ para }}</p>{% endfor %}
       {% if site.get('about_poem') %}<p class="about-poem">{% for line in site.about_poem %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>{% endif %}
-      {% if site.get('motto') %}<p class="about-motto">{{ site.motto }}</p>{% endif %}
       <hr>
     {% elif is_about and site.get('short_bio') %}<p class="about-lede">{{ site.short_bio }}</p>{% endif %}
     {{ item.body_html|safe }}

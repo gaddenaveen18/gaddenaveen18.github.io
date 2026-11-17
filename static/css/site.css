@@ -411,8 +411,8 @@ circle.pv3 { fill: url(#tint-sc); fill-opacity: .11; stroke: #0065BD; stroke-opa
 @media (max-width: 820px) { .perspectives svg { max-width: 24rem; } .hero-verse { font-size: 1.12rem; } }
 
 .brand { display: inline-flex; align-items: flex-start; gap: .7rem; text-decoration: none; }
-.brand-mark { width: 35px; height: 35px; margin-top: 3px; border-radius: 8px; flex: none; }  /* top meets the capitals of the name, bottom meets the motto baseline */
+.brand-mark { width: 33px; height: 33px; margin-top: 3px; border-radius: 8px; flex: none; }  /* top meets the capitals of the name, bottom meets the motto baseline */
 .brand-text { display: grid; gap: .15rem; }
 .brand-name { line-height: 1.1; }
-.brand-motto { font: italic .82rem/1.2 var(--serif); color: var(--accent); letter-spacing: .01em; font-weight: 400; }
-@media (max-width: 420px) { .brand-mark { width: 33px; height: 33px; } .brand-motto { font-size: .74rem; } }
+.brand-motto { font: italic .72rem/1.2 var(--serif); color: var(--accent); letter-spacing: .01em; font-weight: 400; opacity: .9; }
+@media (max-width: 420px) { .brand-mark { width: 31px; height: 31px; } .brand-motto { font-size: .66rem; } }
