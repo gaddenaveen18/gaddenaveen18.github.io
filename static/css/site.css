@@ -392,3 +392,8 @@ circle.pv3 { fill: url(#tint-us); fill-opacity: .12; stroke: #8a3a5a; stroke-opa
 .start-here a { color: var(--accent); font-style: normal; font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
 .start-here a:hover { border-bottom-color: var(--accent); }
 .start-here span { color: var(--accent); }
+
+.home-verse { padding: 1rem 0 4.5rem; }
+.home-verse-text { margin: 0 auto; max-width: 30rem; text-align: center; font: italic 1.45rem/1.65 var(--serif); color: var(--accent); }
+.home-verse-text::before { content: ""; display: block; width: 3rem; height: 1px; margin: 0 auto 1.6rem; background: var(--accent); opacity: .5; }
+@media (max-width: 520px) { .home-verse-text { font-size: 1.12rem; } }
