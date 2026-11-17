@@ -29,14 +29,14 @@
   "roles": "Engineer · Poet · Collector of perspectives",
   "tagline_accent": "the questions",
   "perspectives": [
+    "United States",
     "India",
-    "Scotland",
-    "United States"
+    "Scotland"
   ],
   "perspective_notes": [
+    "built my career · home",
     "grew up · studied engineering",
-    "two master’s degrees",
-    "built my career · home"
+    "two master’s degrees"
   ],
   "start_here": {
     "text": "New here? Start with",
