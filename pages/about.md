@@ -1,6 +1,6 @@
 ---
 title: About
-summary: Part engineer, part poet, shaped by India, Scotland and the United States. Naveen Gadde writes thought experiments, frameworks and short books on leadership, reliability and the questions that move us forward.
+summary: Part engineer, part poet, shaped by India, Scotland and the United States. Naveen Gadde writes thought experiments, frameworks and short books exploring the questions where technology, work and life meet.
 ---
 
 I'm an IT leader with two decades of experience driving Site Reliability Engineering, cloud infrastructure, and middleware integration for large-scale, complex technology environments. I simplify and execute demanding programs that others find hard to untangle — and I bring a track record of credibility across every team I've led.
