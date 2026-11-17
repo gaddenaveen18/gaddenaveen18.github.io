@@ -238,7 +238,6 @@ def build(out: Path = OUT, today: date | None = None) -> dict:
 
     write("/", "home.html", posts=posts[: cfg.get("home_post_count", 6)], all_count=len(posts),
           latest_series=series_posts[0] if series_posts else None, frameworks=frameworks, books=books,
-          latest_mixed=sorted(posts[:3] + frameworks[:3], key=lambda i: (-(i.date or date.min).toordinal(), int(i.meta.get("order") or 999), i.title.lower())),  # a few of each, so both kinds show
           latest_frameworks=frameworks[: cfg.get("home_framework_count", 3)])
     write("/posts/", "archive.html", posts=posts, years=_group_by_year(posts))
     for p in posts:
