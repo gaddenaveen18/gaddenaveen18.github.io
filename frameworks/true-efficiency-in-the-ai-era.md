@@ -1,5 +1,4 @@
 ---
-draft: true
 window: 3
 title: "True Efficiency in the AI Era: Augmentation vs Substitution"
 topic: Leadership & Mindset

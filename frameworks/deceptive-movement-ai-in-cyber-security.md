@@ -1,10 +1,9 @@
 ---
-draft: true
 window: 5
 title: "Deceptive Movement: AI in Cyber Security"
 topic: Security
 order: 8
-date: 2026-11-30
+date: 2026-11-16
 source_post: AI in IT security
 summary: Securing IT infrastructure with AI agents by balancing the known and the unknown. Defend what you know, use deception to learn from what you don't, and let every attempt make you stronger.
 image: posts/deceptive-movement-ai-in-cyber-security.jpg

@@ -1,10 +1,9 @@
 ---
-draft: true
 window: 5
 title: The 7-Layer Autonomous Observability Architecture
 topic: Reliability & Operations
 order: 7
-date: 2026-11-30
+date: 2026-11-16
 source_post: The 7-Layer Autonomous Observability Architecture
 summary: Seven layers that carry a system from raw signals to governed action. Observability shows what is happening, intelligence explains why, governance decides what can act, and automation closes the loop.
 image: posts/7-layer-autonomous-observability-architecture.jpg

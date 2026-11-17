@@ -1,10 +1,9 @@
 ---
-draft: true
 window: 6
 title: "Token Optimization: Leave Logic to AI, Keep Common Sense Human"
 topic: AI & Data
 order: 4
-date: 2026-12-07
+date: 2026-11-16
 source_post: Look for solution helps more than look at the problem - Token usage efficiencies in AI Era
 summary: AI-controlled vs user-controlled token optimization. Let the system handle retrieval, input, model choice and pruning, and keep people in charge of context and judgment. Better ROI, faster results and more trust all at once.
 image: posts/token-optimization-logic-to-ai-common-sense-to-humans.jpg
