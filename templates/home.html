@@ -13,10 +13,11 @@
       {% else %}
       <p class="intro-body">I write <em>{{ series_label }}</em>, a series I publish from time to time: one idea about leadership, engineering or work, examined from a different angle. This site keeps every post, framework and book in one place.</p>
       {% endif %}
-      <p class="intro-links">
+      {% set sh = site.get('start_here') %}
+      {% if not sh %}<p class="intro-links">
         {% if frameworks %}<a class="button" href="{{ base }}/frameworks/">Explore the frameworks</a>{% else %}<a class="button" href="{{ base }}/posts/">Read the Thought Experiments</a>{% endif %}
-      </p>
-      {% set sh = site.get('start_here') %}{% if sh %}<p class="start-here">{{ sh.text }} <a href="{{ base }}{{ sh.url }}">{{ sh.title }}</a> <span aria-hidden="true">→</span></p>{% endif %}
+      </p>{% endif %}
+      {% if sh %}<p class="start-here">{{ sh.text }} <a href="{{ base }}{{ sh.url }}">{{ sh.title }}</a> <span aria-hidden="true">→</span></p>{% endif %}
     </div>
     {% if site.get('photo') %}
     {% set pv = site.get('perspectives', []) %}
