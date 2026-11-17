@@ -69,6 +69,14 @@
   </div>
 </section>
 
+{% if site.get('about_poem') %}
+<section class="home-verse" aria-label="A closing verse">
+  <div class="wrap">
+    <p class="home-verse-text">{% for line in site.about_poem %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
+  </div>
+</section>
+{% endif %}
+
 {% if site.get('offerings') %}
 <section class="offerings">
   <div class="wrap">
@@ -144,12 +152,5 @@
   </div></div>
 </section>
 
-{% if site.get('about_poem') %}
-<section class="home-verse" aria-label="A closing verse">
-  <div class="wrap">
-    <p class="home-verse-text">{% for line in site.about_poem %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
-  </div>
-</section>
-{% endif %}
 
 {% endblock %}
