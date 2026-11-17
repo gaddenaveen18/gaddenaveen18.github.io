@@ -6,6 +6,7 @@ order: 2
 date: 2026-11-16
 source_post: True Efficiency in the AI Era (AI-Augmentation vs AI-Substitution)
 summary: Efficiency in the AI era comes from auditing outputs, enhancing human ingenuity and guiding AI with high-quality examples. Augmentation compounds into growth; substitution erodes into decline.
+card_summary: Augment, don’t substitute. Accountability, creativity and example make AI truly efficient.
 image: posts/true-efficiency-in-the-ai-era.jpg
 image_alt: Infographic of True Efficiency in the AI Era comparing AI augmentation (accountability, creativity, example, leading to growth) with AI substitution (no accountability, no creativity, guided by AI, leading to decline).
 ---

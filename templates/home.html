@@ -77,7 +77,7 @@
     <ul class="offer-grid">
       {% for o in site.offerings %}
       {% set soon = o.get('soon_key') and site.get(o.soon_key) and not (o.url == '/books/' and books) and not (o.url == '/frameworks/' and frameworks) %}
-      <li><a href="{{ base }}{{ o.url }}">{% if o.get('role') %}<span class="offer-role">{{ o.role }}</span>{% endif %}<span class="offer-title">{{ o.title }}{% if soon %} <span class="offer-soon">Coming soon</span>{% endif %}</span><span class="offer-text">{{ o.text }}</span></a></li>
+      <li{% if soon %} class="is-soon"{% endif %}><a href="{{ base }}{{ o.url }}">{% if o.get('role') %}<span class="offer-role">{{ o.role }}</span>{% endif %}<span class="offer-title">{{ o.title }}{% if soon %} <span class="offer-soon">Coming soon</span>{% else %} <span class="offer-go" aria-hidden="true">→</span>{% endif %}</span><span class="offer-text">{{ o.text }}</span></a></li>
       {% endfor %}
     </ul>
   </div>

@@ -416,3 +416,8 @@ circle.pv3 { fill: url(#tint-sc); fill-opacity: .11; stroke: #0065BD; stroke-opa
 .brand-name { line-height: 1.1; }
 .brand-motto { font: italic .72rem/1.2 var(--serif); color: var(--accent); letter-spacing: .01em; font-weight: 400; opacity: .9; }
 @media (max-width: 420px) { .brand-mark { width: 31px; height: 31px; } .brand-motto { font-size: .66rem; } }
+
+.offer-go { color: var(--accent); font-weight: 400; transition: transform .15s; display: inline-block; }
+.offer-grid a:hover .offer-go { transform: translateX(3px); }
+.offer-grid li.is-soon a { opacity: .78; border-top-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.offer-grid li.is-soon a:hover { opacity: 1; }

@@ -7,6 +7,7 @@ order: 4
 date: 2027-01-11
 source_post: The Maker's Love, the Market's Choice
 summary: The maker sees tomorrow; the customer has to decide today. Seven planks for a bridge that makes a new idea useful, trustworthy and within reach now, with quality and ethics fixed and almost everything else free to change.
+card_summary: Tomorrow’s idea, today’s choice. Seven steps for a bridge that makes value easy to trust.
 image: posts/the-makers-love-the-markets-choice.jpg
 image_alt: Infographic of The Maker's Love, the Market's Choice, with the customer who lives in today on one side, the maker who sees tomorrow on the other, and a seven-plank bridge between them from start with the person to share the market, built on trust.
 ---

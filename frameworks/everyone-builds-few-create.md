@@ -7,6 +7,7 @@ order: 3
 date: 2027-01-04
 source_post: Everyone Builds, Few Create
 summary: If almost everyone can build, where does creation begin? A look at building versus creation, and six shifts in how we see purpose, success, failure, reward and the creator. We build individually. Creation emerges collectively.
+card_summary: If almost everyone can build, where does creation begin? Six shifts in how we see contribution.
 image: posts/everyone-builds-few-create.jpg
 image_alt: Infographic of Everyone Builds, Few Create, showing the path from building to creation, six shifts in how we see contribution, a lesson from the cells of the body, and the principle We build individually, creation emerges collectively.
 ---

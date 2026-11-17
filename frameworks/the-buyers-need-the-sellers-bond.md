@@ -7,6 +7,7 @@ order: 5
 date: 2027-01-18
 source_post: The Buyer's Need, the Seller's Bond
 summary: What turns a sale into trust, and trust into a bond? The same moments handled two ways, as a transaction or as a bond, and seven turns from need to the next honest conversation.
+card_summary: A sale or a bond? Seven turns from a buyer’s need to the next honest conversation.
 image: posts/the-buyers-need-the-sellers-bond.jpg
 image_alt: Infographic of The Buyer's Need, the Seller's Bond, comparing a transaction with a bond across eight moments, a circle of seven turns from need, fit and truth to use, fix, both win and the next conversation, and three lines on truth, healthy dependence and trust.
 ---

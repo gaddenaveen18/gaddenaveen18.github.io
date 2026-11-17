@@ -7,6 +7,7 @@ order: 2
 date: 2026-12-28
 source_post: The Explorer's Curiosity, The Entrepreneur's Creation
 summary: Explore with a loop, not a line. Pass three questions before turning a discovery into a creation, then let the path evolve while the purpose stays. Don't reset the Explorer. Refresh the Explorer.
+card_summary: Explore in a loop, pass three questions before creating, and let the path evolve.
 image: posts/the-explorers-curiosity-the-entrepreneurs-creation.jpg
 image_alt: Infographic of The Explorer's Curiosity, the Entrepreneur's Creation, with the Explorer's Loop of notice, wonder, try, learn, retry and see again, three questions to ask before creating, four ways to evolve the path, and the principle Don't reset the Explorer, refresh the Explorer.
 ---

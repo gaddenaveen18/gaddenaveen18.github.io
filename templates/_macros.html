@@ -61,7 +61,7 @@
     <span class="card-body">
       {% if kicker or topic %}<span class="topic">{{ kicker or topic }}</span>{% endif %}
       <span class="card-title">{{ item.title }}</span>
-      <span class="card-summary">{{ item.excerpt }}</span>
+      <span class="card-summary">{{ item.meta.get('card_summary') or item.excerpt }}</span>
     </span>
   </a>
 </li>

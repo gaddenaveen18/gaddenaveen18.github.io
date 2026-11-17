@@ -6,6 +6,7 @@ order: 5
 date: 2026-11-16
 source_post: AI Solutioning Within Engineering Principles (Fallback Hierarchy)
 summary: Five layers that let an AI system fall gently instead of falling apart, from the most capable model down to a human, without ever losing the user's context. Advance by intent. Design by safety.
+card_summary: Five layers that let an AI system fall gently, from the best model down to a person.
 image: posts/the-ai-fallback-hierarchy.jpg
 image_alt: Infographic of the AI Fallback Hierarchy, five descending layers from Advanced AI model to Human escalation joined by a session-state line, with the triggers for stepping down, five implementation steps and the key principle.
 ---

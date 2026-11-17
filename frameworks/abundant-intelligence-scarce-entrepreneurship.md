@@ -7,6 +7,7 @@ order: 1
 date: 2026-12-21
 source_post: Abundant Intelligence, Scarce Entrepreneurship
 summary: When AI can draft, design, code and test in an afternoon, building stops being the hard part. Seven questions for finding what is still ours to do, starting with one real need.
+card_summary: When building gets easy, what is still ours to do? Seven questions, one real need.
 image: posts/abundant-intelligence-scarce-entrepreneurship.jpg
 image_alt: Infographic of Abundant Intelligence, Scarce Entrepreneurship, with what AI can now do on one side, what is still ours on the other, seven questions in the middle, and four reminders that possibility is not purpose, an answer is not a decision, speed is not quality and a tool is not a need.
 ---

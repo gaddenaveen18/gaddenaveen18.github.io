@@ -8,6 +8,7 @@ source_post: Right Questions vs. Right Answers
 diagram: question-loop
 stages: Question, Understanding, Options, Ownership, Action, Outcome, Better Question
 summary: Seven stages, one continuous cycle, for leadership, AI, sales, engineering and life. Every answer should sharpen the next question.
+card_summary: Seven stages, one continuous cycle. Every answer should sharpen the next question.
 image: posts/right-questions-vs-right-answers.jpg
 image_alt: Infographic of The Question Loop, seven stages in a cycle from Question to Better Question, with examples of the loop in different areas of work and four ways to try it this week.
 ---

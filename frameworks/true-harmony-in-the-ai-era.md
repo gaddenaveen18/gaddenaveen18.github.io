@@ -6,6 +6,7 @@ order: 1
 date: 2026-11-16
 source_post: True Harmony - In AI Era
 summary: Two forces, one extraordinary mind. Intellect is what we cultivate, intelligence is how we adapt, and AI can help the two work in balance. Mastery emerges when they align.
+card_summary: Intellect is what we cultivate; intelligence is how we adapt. Mastery comes when they align.
 image: posts/true-harmony-in-the-ai-era.jpg
 image_alt: Infographic of Modern Mastery Through AI-Driven Balance, with Intellect (cultivated) on one side, Intelligence (natural) on the other, AI-driven harmony in the center and an efficiency spectrum from low to high.
 ---

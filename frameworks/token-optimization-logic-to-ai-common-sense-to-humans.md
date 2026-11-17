@@ -6,6 +6,7 @@ order: 4
 date: 2026-11-16
 source_post: Look for solution helps more than look at the problem - Token usage efficiencies in AI Era
 summary: AI-controlled vs user-controlled token optimization. Let the system handle retrieval, input, model choice and pruning, and keep people in charge of context and judgment. Better ROI, faster results and more trust all at once.
+card_summary: Let AI handle the mechanics of token use. Keep people in charge of context and judgment.
 image: posts/token-optimization-logic-to-ai-common-sense-to-humans.jpg
 image_alt: Infographic comparing AI-controlled and user-controlled token optimization across context, input, model and focus, with the compound benefits of ROI, speed and trust, and the principles Leave logic to AI and Keep common sense human.
 ---

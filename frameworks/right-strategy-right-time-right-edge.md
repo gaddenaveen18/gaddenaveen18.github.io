@@ -7,6 +7,7 @@ order: 3
 date: 2026-11-09
 source_post: Right Strategy at Right Time give Right Edge - Data Strategy in AI Era
 summary: A real-work maturity path for AI. Three questions take a team from using data, to optimizing the data it has, to building data no one else has. Starter, Contender, Leader.
+card_summary: Three questions, asked in order, take a team from using data to owning its edge.
 image: posts/right-strategy-right-time-right-edge.jpg
 image_alt: Infographic of Right Strategy, Right Time, Right Edge, three rising stages from Starter to Contender to Leader, each with its key question, ways to improve, tool options and outcome.
 ---

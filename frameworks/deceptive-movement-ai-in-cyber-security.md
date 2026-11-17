@@ -6,6 +6,7 @@ order: 8
 date: 2026-11-16
 source_post: AI in IT security
 summary: Securing IT infrastructure with AI agents by balancing the known and the unknown. Defend what you know, use deception to learn from what you don't, and let every attempt make you stronger.
+card_summary: Defend what you know and learn from what you don’t, with AI on both sides.
 image: posts/deceptive-movement-ai-in-cyber-security.jpg
 image_alt: Infographic of Deceptive Movement with AI in Cyber Security, a balance scale between the known environment (AI defense agent, monitor and protect, control and defuse) and unknown threats (AI deception agent, track and analyze, recover and win), with lure and decoy, adapt and respond, and threat intel.
 ---

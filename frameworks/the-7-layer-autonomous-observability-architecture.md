@@ -6,6 +6,7 @@ order: 7
 date: 2026-11-16
 source_post: The 7-Layer Autonomous Observability Architecture
 summary: Seven layers that carry a system from raw signals to governed action. Observability shows what is happening, intelligence explains why, governance decides what can act, and automation closes the loop.
+card_summary: Seven layers from raw signals to governed action. Autonomy is earned, one runbook at a time.
 image: posts/7-layer-autonomous-observability-architecture.jpg
 image_alt: Infographic of the 7-Layer Autonomous Observability Architecture, showing seven stacked layers from Workload to Governed Remediation, real-world scenarios across five industries, and the business outcomes the layers deliver.
 ---

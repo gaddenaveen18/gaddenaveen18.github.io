@@ -43,7 +43,7 @@
   "frameworks_coming_soon": "Frameworks from the books are on the way, each released alongside its book.",
   "about_bio": [
     "Learning across India, Scotland and the United States taught me that the same problem looks different depending on where you stand. So I collect perspectives, and turn them into short books.",
-    "They aren’t lectures. Each one is a ten-minute conversation: I share what I’ve noticed, ask you a question, and leave space on the page for your answer. And every book ends with a poem, because some ideas only land when they’re felt."
+    "They aren’t lectures. Each one is a short conversation: I share what I’ve noticed, ask you a question, and leave space on the page for your answer. And every book ends with a poem, because some ideas only land when they’re felt."
   ],
   "about_poem": [
     "The engineer in me builds the question.",
@@ -63,22 +63,22 @@
       "text": "One picture and a few clear steps you can use at work, with questions to try with your team.",
       "url": "/frameworks/",
       "soon_key": "frameworks_coming_soon",
-      "role": "The model"
+      "role": "The shape"
     },
     {
       "title": "Books",
-      "text": "Ten-minute books that go deeper, with space to write your own answers and a closing poem.",
+      "text": "Short books that go deeper, with space to write your own answers and a closing poem.",
       "url": "/books/",
       "soon_key": "books_coming_soon",
       "role": "The conversation"
     },
     {
       "title": "Audio editions",
-      "text": "The same books, narrated, for a walk, a drive or a commute. English first, with more languages to follow.",
+      "text": "The same ideas, narrated for a walk, a drive or a commute. English first, with more languages to follow.",
       "url": "/audiobooks/",
       "soon_key": "audiobooks_coming_soon",
       "role": "To listen"
     }
   ],
-  "offerings_line": "A post asks the question. A framework gives you the model. A book takes the conversation deeper."
+  "offerings_line": "A post opens a question. A framework gives it shape. A book takes the conversation deeper."
 }
