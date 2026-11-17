@@ -58,8 +58,6 @@
         <circle class="photo-ring" cx="300" cy="262" r="96"/>
         {% if site.get('perspectives_caption') %}<text class="pv-caption" x="300" y="{{ 548 if site.get('perspective_notes') else 540 }}" text-anchor="middle">{{ site.perspectives_caption }}</text>{% endif %}
       </svg>
-      <span class="persp-name">{{ site.author }}</span>
-      {% if site.get('motto') %}<span class="persp-motto">{{ site.motto }}</span>{% endif %}
     </a>
     {% elif loop_fw %}
     <a class="intro-figure" href="{{ base }}{{ loop_fw[0].url }}" aria-label="Open {{ loop_fw[0].title }}">

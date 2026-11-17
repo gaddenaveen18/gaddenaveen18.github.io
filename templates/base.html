@@ -41,7 +41,10 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="masthead">
     <div class="wrap masthead-inner">
-      <a class="name" href="{{ base }}/">{{ site.title }}</a>
+      <a class="name brand" href="{{ base }}/" aria-label="{{ site.title }}, home">
+        <img class="brand-mark" src="{{ base }}/assets/favicon-192.png" alt="" width="38" height="38">
+        <span class="brand-text"><span class="brand-name">{{ site.title }}</span>{% if site.get('motto') %}<span class="brand-motto">{{ site.motto }}</span>{% endif %}</span>
+      </a>
       <nav aria-label="Main">
         <a href="{{ base }}/posts/" {% if path.startswith('/posts') %}aria-current="page"{% endif %}>Writing</a>
         {% if nav_books %}<a href="{{ base }}/books/" {% if path.startswith('/books') %}aria-current="page"{% endif %}>Books</a>{% endif %}
