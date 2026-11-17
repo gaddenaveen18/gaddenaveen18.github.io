@@ -59,27 +59,32 @@
   ],
   "offerings": [
     {
-      "title": "Thought Experiments",
-      "text": "Short posts, each one question explored from a new angle.",
-      "url": "/posts/"
+      "title": "Writing",
+      "text": "Short Thought Experiment posts. Each asks one question to get you thinking. A three-minute read.",
+      "url": "/posts/",
+      "role": "The question"
     },
     {
       "title": "Frameworks",
-      "text": "Simple models for leadership, AI and reliability, each with a picture.",
+      "text": "One picture and a few clear steps you can use at work, with questions to try with your team.",
       "url": "/frameworks/",
-      "soon_key": "frameworks_coming_soon"
+      "soon_key": "frameworks_coming_soon",
+      "role": "The model"
     },
     {
       "title": "Books",
-      "text": "Ten-minute conversational books you write in as you read.",
+      "text": "Ten-minute books that go deeper, with space to write your own answers and a closing poem.",
       "url": "/books/",
-      "soon_key": "books_coming_soon"
+      "soon_key": "books_coming_soon",
+      "role": "The conversation"
     },
     {
       "title": "Audio editions",
       "text": "The same books, narrated.",
       "url": "/audiobooks/",
-      "soon_key": "audiobooks_coming_soon"
+      "soon_key": "audiobooks_coming_soon",
+      "role": "To listen"
     }
-  ]
+  ],
+  "offerings_line": "A post asks the question. A framework gives you the model. A book takes the conversation deeper."
 }

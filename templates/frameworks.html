@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% from "_macros.html" import card %}
 {% set title = "Frameworks" %}
-{% set description = "Frameworks by Naveen Gadde: simple models for leadership, reliability and work, each introduced in a post." %}
+{% set description = "Frameworks by Naveen Gadde: simple models for leadership, AI and reliability, each with a picture and steps to try." %}
 {% block content %}
 <section class="page-head">
   <div class="wrap">
     <h1>Frameworks</h1>
-    <p class="page-sub">Simple models for leadership, AI, reliability and work. {{ frameworks|length }} so far, newest first.</p>
+    <p class="page-sub">Models you can use: one picture, a few clear steps, and questions to try with your team. {{ frameworks|length }} so far, newest first.</p>
     {% if topics|length > 1 %}
     <div class="chips" role="group" aria-label="Filter by topic" hidden>
       <button type="button" class="chip" aria-pressed="true" data-topic="">All</button>

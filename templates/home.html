@@ -66,10 +66,11 @@
 <section class="offerings">
   <div class="wrap">
     <h2 class="section-title">What you’ll find here</h2>
+    {% if site.get('offerings_line') %}<p class="section-sub">{{ site.offerings_line }}</p>{% endif %}
     <ul class="offer-grid">
       {% for o in site.offerings %}
       {% set soon = o.get('soon_key') and site.get(o.soon_key) and not (o.url == '/books/' and books) and not (o.url == '/frameworks/' and frameworks) %}
-      <li><a href="{{ base }}{{ o.url }}"><span class="offer-title">{{ o.title }}{% if soon %} <span class="offer-soon">Coming soon</span>{% endif %}</span><span class="offer-text">{{ o.text }}</span></a></li>
+      <li><a href="{{ base }}{{ o.url }}">{% if o.get('role') %}<span class="offer-role">{{ o.role }}</span>{% endif %}<span class="offer-title">{{ o.title }}{% if soon %} <span class="offer-soon">Coming soon</span>{% endif %}</span><span class="offer-text">{{ o.text }}</span></a></li>
       {% endfor %}
     </ul>
   </div>
