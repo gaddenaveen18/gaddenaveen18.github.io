@@ -4,7 +4,7 @@ draft: true
 title: "The Maker's Love, the Market's Choice"
 topic: Entrepreneurship
 order: 4
-date: 2026-11-15
+date: 2027-01-11
 source_post: The Maker's Love, the Market's Choice
 summary: The maker sees tomorrow; the customer has to decide today. Seven planks for a bridge that makes a new idea useful, trustworthy and within reach now, with quality and ethics fixed and almost everything else free to change.
 image: posts/the-makers-love-the-markets-choice.jpg

@@ -4,7 +4,7 @@ draft: true
 title: "Everyone Builds, Few Create"
 topic: Entrepreneurship
 order: 3
-date: 2026-11-15
+date: 2027-01-04
 source_post: Everyone Builds, Few Create
 summary: If almost everyone can build, where does creation begin? A look at building versus creation, and six shifts in how we see purpose, success, failure, reward and the creator. We build individually. Creation emerges collectively.
 image: posts/everyone-builds-few-create.jpg

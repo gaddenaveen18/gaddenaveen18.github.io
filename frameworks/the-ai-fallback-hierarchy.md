@@ -4,8 +4,7 @@ window: 5
 title: The AI Fallback Hierarchy
 topic: Reliability & Operations
 order: 5
-date: 2026-11-13
-publish_at: 2026-11-13 21:00
+date: 2026-11-30
 source_post: AI Solutioning Within Engineering Principles (Fallback Hierarchy)
 summary: Five layers that let an AI system fall gently instead of falling apart, from the most capable model down to a human, without ever losing the user's context. Advance by intent. Design by safety.
 image: posts/the-ai-fallback-hierarchy.jpg

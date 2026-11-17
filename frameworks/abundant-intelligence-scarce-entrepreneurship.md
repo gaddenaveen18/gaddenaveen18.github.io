@@ -4,7 +4,7 @@ draft: true
 title: "Abundant Intelligence, Scarce Entrepreneurship"
 topic: Entrepreneurship
 order: 1
-date: 2026-11-15
+date: 2026-12-21
 source_post: Abundant Intelligence, Scarce Entrepreneurship
 summary: When AI can draft, design, code and test in an afternoon, building stops being the hard part. Seven questions for finding what is still ours to do, starting with one real need.
 image: posts/abundant-intelligence-scarce-entrepreneurship.jpg

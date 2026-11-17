@@ -4,7 +4,7 @@ draft: true
 title: "The Explorer's Curiosity, the Entrepreneur's Creation"
 topic: Entrepreneurship
 order: 2
-date: 2026-11-15
+date: 2026-12-28
 source_post: The Explorer's Curiosity, The Entrepreneur's Creation
 summary: Explore with a loop, not a line. Pass three questions before turning a discovery into a creation, then let the path evolve while the purpose stays. Don't reset the Explorer. Refresh the Explorer.
 image: posts/the-explorers-curiosity-the-entrepreneurs-creation.jpg
