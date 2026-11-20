@@ -1,15 +1,15 @@
 ---
 window: 8
 draft: true
-title: "Abundant Intelligence, Scarce Entrepreneurship"
+title: "The Machine's Answers, the Entrepreneur's Purpose"
 topic: Entrepreneurship
 order: 1
 date: 2026-12-21
-source_post: Abundant Intelligence, Scarce Entrepreneurship
+source_post: The Machine's Answers, the Entrepreneur's Purpose
 summary: When AI can draft, design, code and test in an afternoon, building stops being the hard part. Seven questions for finding what is still ours to do, starting with one real need.
 card_summary: When building gets easy, what is still ours to do? Seven questions, one real need.
-image: posts/abundant-intelligence-scarce-entrepreneurship.jpg
-image_alt: Infographic of Abundant Intelligence, Scarce Entrepreneurship, with what AI can now do on one side, what is still ours on the other, seven questions in the middle, and four reminders that possibility is not purpose, an answer is not a decision, speed is not quality and a tool is not a need.
+image: posts/the-machines-answers-the-entrepreneurs-purpose.jpg
+image_alt: Infographic of The Machine's Answers, the Entrepreneur's Purpose, with what AI can now do on one side, what is still ours on the other, seven questions in the middle, and four reminders that possibility is not purpose, an answer is not a decision, speed is not quality and a tool is not a need.
 ---
 
 **If intelligence becomes abundant, what is still ours to do?**
@@ -18,7 +18,7 @@ For a long time, the hard part of making something was the making itself. Now AI
 
 I don't have a neat answer. This framework comes from the first book in my series on entrepreneurship in the superintelligence era, and it works best if you carry one real need through it: something at work, at home or in your community that could work better. Don't solve it yet. Just bring it along.
 
-[![Abundant Intelligence, Scarce Entrepreneurship](/assets/posts/abundant-intelligence-scarce-entrepreneurship.jpg)](/assets/posts/abundant-intelligence-scarce-entrepreneurship.jpg)
+[![The Machine's Answers, the Entrepreneur's Purpose](/assets/posts/the-machines-answers-the-entrepreneurs-purpose.jpg)](/assets/posts/the-machines-answers-the-entrepreneurs-purpose.jpg)
 
 ## What got abundant, and what didn't
 
