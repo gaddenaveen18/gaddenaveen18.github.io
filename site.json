@@ -22,12 +22,14 @@
   "home_framework_count": 3,
   "cards_per_page": 12,
   "substack_url": "https://gaddenaveen.substack.com",
+  "hide_substack_link": true,
   "subscribe_line": "One email when a new volume or framework is published. No spam, unsubscribe anytime.",
   "photo": "people/naveen-gadde.jpg",
-  "short_bio": "Part engineer, part poet. I’ve spent two decades keeping large systems running. I collect perspectives from three countries and turn them into short books that read like conversations, not lectures. Every one ends with a poem, and leaves the last page for you.",
+  "short_bio": "Part engineer, part poet. I’ve spent two decades keeping large systems running. I collect perspectives from three countries and turn them into short posts, practical frameworks and books that read like conversations, not lectures.",
   "motto": "Think Big. Act Wise. Bring Clarity.",
   "roles": "Engineer · Poet · Collector of perspectives",
   "tagline_accent": "the questions",
+  "subtagline": "Questions worth coming back to.",
   "perspectives": [
     "United States",
     "India",
@@ -80,5 +82,5 @@
       "role": "To listen"
     }
   ],
-  "offerings_line": "A post opens a question. A framework gives it shape. A book takes the conversation deeper."
+  "offerings_line": "A post opens a question. A framework gives it shape. A book takes the conversation deeper. Audio lets you carry it."
 }

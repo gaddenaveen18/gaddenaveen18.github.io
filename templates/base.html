@@ -67,7 +67,7 @@
       <span>
         {% if 'YOUR-' not in site.linkedin_url %}<a href="{{ site.linkedin_url }}" rel="me noopener">LinkedIn</a>{% endif %}
         {% if site.email %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}
-        {% if site.get('substack_url') %}<a href="{{ site.substack_url }}" rel="me noopener">Substack</a>{% endif %}
+        {% if site.get('substack_url') and not site.get('hide_substack_link') %}<a href="{{ site.substack_url }}" rel="me noopener">Substack</a>{% endif %}
         <a href="{{ base }}/search/">Search</a>
         <a href="{{ base }}/feed.xml">RSS</a>
       </span>

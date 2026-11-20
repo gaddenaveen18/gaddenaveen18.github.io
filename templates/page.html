@@ -24,7 +24,7 @@
   <div class="wrap narrow article-foot">
     <p class="connect"><strong>Connect:</strong>
       {% if 'YOUR-' not in site.linkedin_url %}<a href="{{ site.linkedin_url }}" rel="me noopener">LinkedIn</a>{% endif %}
-      {% if site.get('substack_url') %}<a href="{{ site.substack_url }}" rel="me noopener">Substack</a>{% endif %}
+      {% if site.get('substack_url') and not site.get('hide_substack_link') %}<a href="{{ site.substack_url }}" rel="me noopener">Substack</a>{% endif %}
       <a href="{{ base }}/frameworks/">Frameworks</a>{% if nav_books %} <a href="{{ base }}/books/">Books</a>{% endif %}</p>
     {{ subscribe_box() }}
   </div>

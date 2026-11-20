@@ -8,6 +8,7 @@
       {% if site.get('photo') and site.get('roles') %}<p class="intro-kicker">{{ site.roles }}</p>{% endif %}
       {% set accent = site.get('tagline_accent', '') %}
       <p class="intro-lede">{% if site.get('photo') and accent and accent in site.tagline %}{{ site.tagline.split(accent)[0] }}<em class="lede-accent">{{ accent }}</em>{{ site.tagline.split(accent, 1)[1] }}{% else %}{{ site.tagline }}{% endif %}</p>
+      {% if site.get('subtagline') %}<p class="intro-sub">{{ site.subtagline }}</p>{% endif %}
       {% if site.get('photo') and site.get('short_bio') %}
       <p class="intro-body">{{ site.short_bio }}</p>
       {% else %}
@@ -96,7 +97,7 @@
       </span>
       {% if latest_series.meta.get('image') %}<img class="feature-thumb" src="{{ base }}/assets/{{ latest_series.meta.image }}" alt="" loading="lazy">{% endif %}
     </a>
-    {% if all_count > 1 %}<p class="more"><a href="{{ base }}/posts/">All {{ all_count }} posts</a></p>{% endif %}
+    {% if all_count > 1 %}<p class="more"><a href="{{ base }}/posts/">All posts <span aria-hidden="true">→</span></a></p>{% endif %}
   </div>
 </section>
 {% endif %}
@@ -122,7 +123,7 @@
     <ul class="cards cards-strip">
       {% for f in latest_frameworks %}{{ card(f) }}{% endfor %}
     </ul>
-    {% if frameworks|length > latest_frameworks|length %}<p class="more"><a href="{{ base }}/frameworks/">All {{ frameworks|length }} frameworks</a></p>{% endif %}
+    {% if frameworks|length > latest_frameworks|length %}<p class="more"><a href="{{ base }}/frameworks/">All frameworks <span aria-hidden="true">→</span></a></p>{% endif %}
   </div>
 </section>
 {% endif %}

@@ -421,3 +421,7 @@ circle.pv3 { fill: url(#tint-sc); fill-opacity: .11; stroke: #0065BD; stroke-opa
 .offer-grid a:hover .offer-go { transform: translateX(3px); }
 .offer-grid li.is-soon a { opacity: .78; border-top-color: color-mix(in srgb, var(--accent) 45%, transparent); }
 .offer-grid li.is-soon a:hover { opacity: 1; }
+
+/* ---------- home: return line under the headline ---------- */
+.intro-sub { margin: -.55rem 0 1.35rem; font: italic 500 1.2rem/1.4 var(--serif); color: var(--accent); letter-spacing: .005em; }
+@media (max-width: 560px) { .intro-sub { font-size: 1.08rem; margin-top: -.4rem; } }
