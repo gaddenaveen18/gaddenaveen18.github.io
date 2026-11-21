@@ -84,10 +84,12 @@
     <p class="subscribe-title">{{ heading }}</p>
     <p class="subscribe-sub">{{ site.get('subscribe_line', 'One email when something new is published. No spam, unsubscribe anytime.') }}</p>
   </div>
-  <p class="subscribe-actions">
-    <a class="button" href="{{ site.substack_url }}/subscribe" rel="noopener">Subscribe</a>
-    {% if 'YOUR-' not in site.linkedin_url %}<a class="button quiet" href="{{ site.linkedin_url }}" rel="me noopener">Follow on LinkedIn</a>{% endif %}
-  </p>
+  <form class="subscribe-form" action="{{ site.substack_url }}/api/v1/free?nojs=true" method="post" target="_blank">
+    <label class="visually-hidden" for="sub-email-{{ heading|length }}">Email address</label>
+    <input id="sub-email-{{ heading|length }}" type="email" name="email" placeholder="Your email" required autocomplete="email">
+    <button class="button" type="submit">Subscribe free</button>
+  </form>
+  {% if 'YOUR-' not in site.linkedin_url %}<p class="subscribe-actions"><a class="button quiet" href="{{ site.linkedin_url }}" rel="me noopener">Follow on LinkedIn</a></p>{% endif %}
 </aside>
 {% endif %}
 {% endmacro %}
