@@ -429,3 +429,6 @@ circle.pv3 { fill: url(#tint-sc); fill-opacity: .11; stroke: #0065BD; stroke-opa
 .subscribe-form input[type=email] { flex: 1 1 12rem; min-width: 0; padding: .6rem .8rem; font: inherit; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); color: inherit; }
 .subscribe-form input[type=email]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Home link appears only on phone-width screens, where the menu wraps under the name */
+.masthead nav .nav-home { display: none; }
+@media (max-width: 720px) { .masthead nav .nav-home { display: inline-block; } }
