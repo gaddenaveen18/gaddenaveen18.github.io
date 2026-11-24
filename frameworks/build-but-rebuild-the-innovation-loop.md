@@ -1,5 +1,4 @@
 ---
-draft: true
 title: "Build, but Rebuild: The Innovation Loop"
 topic: AI & Data
 order: 1
@@ -15,6 +14,8 @@ image_alt: Infographic titled Build, but Rebuild, a five-step loop (Solve, Relie
 **Solve, but re-solve.**
 **Move forward, but always circle back.**
 
+**Bottleneck Migration in the Superintelligence Era.** Every solved constraint changes the system. What disappears in one place often reappears somewhere else, as upkeep, resource demand, physical limits, or the need to unlearn. Innovation continues by noticing where the bottleneck moved, then rebuilding there.
+
 Every innovation is a small betrayal of itself. It optimizes the constraint it was built for, and quietly writes the next constraint into existence.
 
 A cart that no longer needs pushing now needs charging. A machine that saves the hands asks something of the grid. A chip that thinks faster runs hotter. A skill we mastered now asks to be unlearned.
@@ -23,9 +24,9 @@ The problem was never removed. It was displaced.
 
 [![Build, but Rebuild](/assets/posts/build-but-rebuild.jpg)](/assets/posts/build-but-rebuild.jpg)
 
-## The principle: burden is conserved
+## The principle: burden often moves, rarely vanishes
 
-Systems rarely lose a burden. They relocate it. Remove the labor, and the cost reappears as maintenance. Remove the latency, and it reappears as power and heat. Remove the error, and it reappears as the work of verifying the output.
+Systems rarely lose a burden outright. More often they relocate it. Remove the labor, and the cost reappears as maintenance. Remove the latency, and it reappears as power and heat. Remove the error, and it reappears as the work of verifying the output.
 
 In the superintelligence era the effect compounds. When solving becomes cheap and fast, the loop closes at machine speed, and the binding constraint moves quickly from answers to energy, compute, data quality, verification and human accountability. Organizations rarely adapt at the same speed.
 
@@ -33,7 +34,7 @@ In the superintelligence era the effect compounds. When solving becomes cheap an
 
 1. **Solve.** Optimize the binding constraint.
 2. **Relieve.** Remove the old cost: labor, latency, error.
-3. **Displace.** The burden is conserved. It relocates.
+3. **Displace.** The burden often relocates.
 4. **Expose.** A new bottleneck becomes visible.
 5. **Redesign.** Log the blueprint, and run the next loop.
 
