@@ -68,6 +68,6 @@ What must we unlearn, and what must stay human? AI code tools shift the skill fr
 
 Isn't that the real definition of innovation: staying in motion, and leaving behind the blueprint for the next problem?
 
-## Builds on
+## Where this comes from
 
-This framework builds on ideas it does not claim to invent: Larry Tesler's law of the conservation of complexity, Eliyahu Goldratt's theory of constraints, the Jevons paradox, and Edward Tenner's "revenge effects" in *Why Things Bite Back*. What it adds is a working loop and four questions for leaders, applied to the AI era.
+The loop and the four questions are a working model drawn from engineering and AI systems. It sits alongside older ideas such as the conservation of complexity, the theory of constraints and revenge effects. What it adds is a simple loop you can run on the fastest-moving constraints of the AI era.
